@@ -1,0 +1,27 @@
+---
+title: ""
+---
+
+
+<html>
+  <head>
+    <title>Title of the document</title>
+    <style>
+      section {
+        display: flex;
+        width: 100%;
+        height: 85vh;
+        margin: auto;
+        align-items:center;
+        justify-content:center;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <center>
+   <img src="C:/Users/My PC/Pictures/midsprint/Branding/Profile Pictures/Text logo.jpg">
+      </center>
+    </section>
+  </body>
+</html>
