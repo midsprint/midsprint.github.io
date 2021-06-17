@@ -20,7 +20,7 @@ title: ""
   <body>
     <section>
       <center>
-   <img src="C:/Users/My PC/Pictures/midsprint/Branding/Profile Pictures/Text logo.jpg">
+   <img src="https://github.com/midsprint/midsprint.github.io/blob/main/assets/images/text%20logo.jpg?raw=true">
       </center>
     </section>
   </body>
