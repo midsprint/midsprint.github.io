@@ -276,7 +276,23 @@ $(document).ready(function () {
        <html>
               <style>
                    
-/* Create four equal columns that floats next to each other */
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+.row {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+  .column {
+    flex: 75%;
+    padding: 2.5%;
+    height: 60%; 
+  }
+       
+       /* Create four equal columns that floats next to each other */
 .column2 {
   float: left;
   width: 25%;
@@ -290,19 +306,27 @@ $(document).ready(function () {
   display: table;
   clear: both;
 }
-              </style>
-
-       <br>
-<h1> Previous Work </h1>
-<p>Sample work will be found here</p>
-
-              <br>
-<center><em>midsprint bridges the...</em></center>
-<br>
        
-</div>
-       </html>
-       <div class="row2">
+</style>
+  </head>
+  <body>
+    
+
+<br>
+<br>
+<div class="row">
+  <div class="column" style="background-color:#fffff;">
+    <center> <img src = "assets/images/tab%20icons/apple-touch-icon.png"> </center>
+  </div>
+  <div class="column" style="background-color:#fffff;">
+    <h2>Previous Work</h2>
+   
+       </body>
+       
+       test script
+</html>
+
+<div class="row2">
   <div class="column2" style="background-color:#fffff;">
     <p><center><a href = "https://www.twitter.com/aaronzpearson/" target = "_blank"><img src = "assets/images/icons/twitter.png", alt = "twitter" width = "16" height = "16"></a></center></p>
   </div>
@@ -335,8 +359,7 @@ $(document).ready(function () {
 </div>
 
 <script>
-
-<script>
+       
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
