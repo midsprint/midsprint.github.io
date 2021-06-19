@@ -279,9 +279,6 @@ $(document).ready(function () {
 
 <html>
 <head>
-<title>
-Title of the document
-</title>
 <style>
       section {
         display: flex;
@@ -291,6 +288,25 @@ Title of the document
         align-items:center;
         justify-content:center;
       }
+       
+       * {
+  box-sizing: border-box;
+}
+
+/* Create four equal columns that floats next to each other */
+.column2 {
+  float: left;
+  width: 25%;
+  padding: 0px;
+  /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row2:after {
+  content: "";
+  display: table;
+  clear: both;
+}
     </style>
 </head>
 <body>
@@ -301,6 +317,23 @@ Title of the document
 </section>
 </body>
 </html>
+       <div class="row2">
+  <div class="column2" style="background-color:#fffff;">
+    <p>twitter</p>
+  </div>
+  <div class="column2" style="background-color:#fffff;">
+    
+    <p>linkedin</p>
+  </div>
+  <div class="column2" style="background-color:#fffff;">
+    
+    <p><center>github</center></p>
+  </div>
+  <div class="column2" style="background-color:#fffff;">
+   
+    <p>email</p>
+  </div>
+</div>
 
        <footer>
 <center>
