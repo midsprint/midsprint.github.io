@@ -265,16 +265,33 @@ $(document).ready(function () {
 
 
 </div>
+       
+<style>
+  border: 1px solid black;
+}
 
+#outer {
+  border: 1px solid red;
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+</style>
 
+              <div id="outer">
+  <div id="inner">
 <div id="previous-work" class="section level2 tabset">
 <h2 class="tabset">Previous Work</h2>
+
 <div id="big-data-bowl-2021" class="section level3">
 <h3>Big Data Bowl 2021</h3>
+       <>br
 <p>Below you will find the Big Data Bowl 2021 submission that explored how athletes’ mechanical sprint abilities affect passing outcomes. The information presented progresses the current literature by modelling athletes’ abilities without requiring them start with zero velocity (dead start). Doing so allows coaches to maximize match-ups during play, providing opportunities to take advantages of athletes’ performance without them needing to setup at the line of scrimmage.</p>
 <p>The original post can be found here: <a href="https://www.kaggle.com/haljordan/modeling-player-biomechanics" class="uri">https://www.kaggle.com/haljordan/modeling-player-biomechanics</a></p>
 <div id="seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes" class="section level4">
+       <br>
 <h4>5 Seconds or Less: Modeling player biomechanics to predict pass outcomes</h4>
+       <br>
 <div id="introduction" class="section level5">
 <h5><strong>1 Introduction</strong></h5>
 <p>The 40-yard dash is one of the most exciting events tested at the NFL Combine. Prospects set-up in a three-point stance and, after a brief pause, start of their own volition. Time begins when the hand is released from the ground and stops when the player breaks the plane at 40 yards. Sprint times are typically five seconds or less.</p>
@@ -283,6 +300,7 @@ $(document).ready(function () {
 <p>This paper explores the relationship between an athlete’s sprint kinetics and pass completion rates. Specifically, it aims to explore whether modeling an athlete’s mechanical sprint profile to cover a given distance can influence pass outcomes. Background information on modeling an athlete’s mechanical sprint abilities is provided as a framework for new methodologies that can be applied in-game.</p>
 </div>
 <div id="athlete-biomechanics" class="section level5">
+       <br>
 <h5><strong>2 Athlete Biomechanics</strong></h5>
 <p>Furusawa and colleagues (1927) first modeled sprint kinetics and kinematics by analyzing a sprinter’s center of mass while running. Their approach utilizing inverse dynamics was a simple method of assessing a sprinter’s biomechanical abilities and horizontal force production. The methods Furusawa and colleagues (1927) introduced remain steadfast in the face of technological advancements.</p>
 <p>Modeling sprint kinetics provides sports scientists with insight into a player’s lower-body neuromuscular potential. For example, this information provides practitioners with the understanding of an athlete’s strengths and weaknesses. Currently, player profiling is impractical when working with positional tracking data. Game data does not often comprise of players reaching maximal speeds with maximal effort, a key factor in force-velocity-power profiling. Instead, researchers resort to profiling athletes at the Combine’s 40-yard dash event. They hope that these athlete profiles translate to in-game sprint performance.</p>
@@ -354,6 +372,7 @@ The cornerback is projected to reach the arrival location in 3.32 s.</p>
 </div>
 </div>
 <div id="predicting-pass-outcomes" class="section level5">
+       <br>
 <h5><strong>3 Predicting Pass Outcomes</strong></h5>
 <div id="nearest-defender" class="section level6">
 <h6><strong>3.1 Nearest Defender</strong></h6>
@@ -367,11 +386,13 @@ The cornerback is projected to reach the arrival location in 3.32 s.</p>
 </div>
 </div>
 <div id="results" class="section level5">
+       <br>
 <h5><strong>4 Results</strong></h5>
 <p>There were 14,271 pass attempts that fit the inclusion criteria (11,022 completions, 3,249 incompletions). The average distance from the time-of-release to time-of-arrival was 5.32 yards and 7.89 yards for receivers and defenders, respectively. Receivers had a mean top speed of 10.6 yd/s and acceleration rate of 12.95 y/s/s (<span class="math inline">\(\tau\)</span> = 0.82 s), whereas defenders displayed a mean top speed of 10.26 yd/s and acceleration of 9.55 y/s/s (<span class="math inline">\(\tau\)</span> = 1.07 s). All details can be found in the table below.</p>
 <p>The model correctly predicted pass outcomes 77.48% of the time (96.38% when the pass was successful, 14.41% when incomplete).</p>
 </div>
 <div id="discussion" class="section level5">
+       <br>
 <h5><strong>5 Discussion</strong></h5>
 <p>This paper was influenced by the current literature surrounding force-velocity-power profiling from the NFL Combine’s 40-yard dash test. It provides a novel approach to modeling athletes’ mechanical sprint capabilitiesn that utilizes positional tracking data. Presently, there is only one publication that also attempts to model athletes <em>in-situ</em>.</p>
 <p>Outcomes were recorded as whichever athlete arrived first at the intended destination, based on their unique profile. The model accurately predicted pass outcomes nearly 4 out of 5 plays. Modeling pass outcomes in this paper presented unique challenges. The model cannot take game factors into account like interference, routes, contact, jukes, and dekes. Rather, it assumes that players are running linearly at maximal effort, without obstructions. As demonstrated, the outcomes heavily favoured pass completions. This can be attributed to the fact that the receiver knows their routes while defenders lag and must react to a receiver’s movements.</p>
@@ -387,9 +408,11 @@ The cornerback is projected to reach the arrival location in 3.32 s.</p>
 </div>
 </div>
 <div id="practical-applications" class="section level5">
+       <br>
 <h5><strong>6 Practical Applications</strong></h5>
 <p>The 40-yard dash lasts 5 seconds or less. Much of the current research states that players with higher top speeds have better career success. The research does not explore the correlation between results at the Combine and on-field performance. This paper illustrates that wide receivers,tight ends, and corner acks heavily rely on their rates of acceleration in-game. Moreover, they rarely reach speeds on the field that were reached during the NFL Combine’s 40-yard dash test. Scouts should focus on an athlete’s rate of acceleration, not their top-speed or 40-yard split, when assessing athletic abilities. The formulas presented in this paper, and the accompanying R package midsprint, provides scouts with a novel method of assessing prospects.</p>
 <div id="appendix-1" class="section level6">
+       <br>
 <h6><strong>Appendix 1</strong></h6>
 <p>References for this paper can be found here: github.com/aaronzpearson/midsprint/references</p>
 </div>
@@ -442,6 +465,8 @@ The cornerback is projected to reach the arrival location in 3.32 s.</p>
 
 
 </div>
+                     </div>
+       </div>
 
 <script>
 
