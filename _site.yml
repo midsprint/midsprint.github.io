@@ -10,9 +10,9 @@ navbar:
     - text: "Contact"
       href: "#contact"
     - text: "Previous Work"
-      href: projects.html
+      href: https://www.midsprint.io/previous-work
     - text: "Blog"
-      href: blog.html
+      href: https://www.midsprint.io/previous-work
 output:
   html_document:
     theme: paper
