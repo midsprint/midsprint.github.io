@@ -1,5 +1,0 @@
----
-title: "Projects"
----
-
-Sample work will be found here

@@ -1,16 +1,20 @@
-name: "midsprint"
-navbar:
-  title: "{ midsprint }"
+name: "midsprint Sports Science Consulting"
+navbar: 
+  # type: "inverse"
+  title: "midsprint.io"
   right:
-    - text: "Home"
-      href: index.html
     - text: "About"
-      href: about.html
-    - text: "Projects"
+      href: "#about"
+    - text: "Services"
+      href: "#services"
+    - text: "Contact"
+      href: "#contact"
+    - text: "Previous Work"
       href: projects.html
+    - text: "Blog"
+      href: blog.html
 output:
   html_document:
-    theme: "simplex"
-    highlight: textmate
-    include:
-      after_body: footer.html
+    theme: paper
+    # include:
+    #   after_body: footer.html

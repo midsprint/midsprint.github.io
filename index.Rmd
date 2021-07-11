@@ -1,27 +1,133 @@
 ---
 title: ""
 ---
-
-
 <html>
-  <head>
-    <title>Title of the document</title>
-    <style>
-      section {
-        display: flex;
-        width: 100%;
-        height: 85vh;
-        margin: auto;
-        align-items:center;
-        justify-content:center;
-      }
-    </style>
-  </head>
-  <body>
-    <section>
-      <center>
-   <img src="https://github.com/midsprint/midsprint.github.io/blob/main/assets/images/text%20logo.jpg?raw=true">
-      </center>
-    </section>
-  </body>
+<head>
+<style type="text/css">
+html {
+  scroll-behavior: smooth;
+}
+.main-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.title {
+  width: 750px;
+  max-width: 90%;
+  margin: auto;
+  color: black;
+}
+.image {
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.par {
+  width: 750px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+}
+.columns {
+  column-count: 2;
+  }
+.youtube {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.fix{
+    position:fixed;
+    bottom:0px;
+    left:50%;
+}
+</style>
+</head>
+<body>
+\
+\
+\
+\
+\
+<div class="main-container">
+<div class="title" id="home">
+# **midsprint** bridges the gap between\
+# sports analytics and exercise science
+</div>
+</div>
+\
+\
+\
+\
+\
+<div class="youtube">
+<center>
+<iframe width="40%" height="315" src="https://www.youtube.com/embed/4NanFCn1FAI?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</iframe>
+&ensp;&ensp;
+<iframe width="40%" height="315" src="https://www.youtube.com/embed/ydDOYFC7UQ0?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+</div>
+\
+\
+\
+\
+\
+<div>
+<center>
+<a href="#about">
+![](images/see more.png){width="75"}
+</a>
+</center>
+</div>
+\
+\
+\
+\
+\
+<div class="par" align="left" id="about">
+##### **About** 
+\
+<p align="justify" style="line-height:150%">
+**Aaron Pearson** is a graduate student at the University of Montreal. His thesis is on how IMU data can provide insight into professional ice-hockey players' lower-limb asymmetries.\
+\
+**During his undergrad**, Aaron worked with GPS and IMU data to model critical speed and anaerobic capacity in professional and collegiate women and men's soccer. \
+\
+**Modelling athletes' abilities** earned Aaron first place at the Vancouver Sports Analytics Symposium and Hackathon (VanSASH) and an honorable mention in the 2021 NFL Big Data Bowl.\
+</p>
+\
+
+</div>
+
+<div class="par" align="left" id="services">
+##### **Services** 
+\
+<p align="justify" style="line-height:150%">
+**Aerobic and anaerobic qualities** which include critical speed, anaerobic capacity, maximal aerobic speed, and VO2max. Modelling these attributes using GPS data decreases the amount of fitness testing, and maximizes the amount of time with the coach.\
+\
+**Mechanical sprint abilities** provide insight into how an athlete responds to training, their physical status, and return-to-play readiness. This information also provides coaches with the ability to maximize players performance with better match-ups and positions.\
+\
+**Energy balance** can be modelled using real-time positional tracking data. This provides coaches with an advantage of understanding which players are tired and how to best adjust playing tactics.\
+\
+**Fitness changes over the course of a season** are very important to track. While the goal is for fitness to increase, seeing decreases in fitness can lead to decreases in performance and the amount of playing time that players can endure.
+</p>
+</div>
+<hr>
+\
+<div id="contact">
+</div>
+<h3 align="center">
+***Interested in working together?*** \
+***Enter your email address below and I will reach out to you directly.***
+</h3>
+\
+
+\
+<h5 align="center">
+If you prefer, you can email me at [aaronzpearson\@outlook.com](mailto:aaronzpearson@outlook.com){.email}.
+\
+<hr>
+</body>
 </html>
