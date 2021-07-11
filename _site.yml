@@ -1,0 +1,20 @@
+name: "midsprint Sports Science Consulting"
+navbar: 
+  # type: "inverse"
+  title: "midsprint.io"
+  right:
+    - text: "About"
+      href: "#about"
+    - text: "Services"
+      href: "#services"
+    - text: "Contact"
+      href: "#contact"
+    - text: "Previous Work"
+      href: projects.html
+    - text: "Blog"
+      href: blog.html
+output:
+  html_document:
+    theme: paper
+    # include:
+    #   after_body: footer.html
