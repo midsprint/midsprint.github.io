@@ -1,5 +1,5 @@
 ---
-title: ""
+title: ''
 ---
 <html>
 <head>
@@ -120,14 +120,14 @@ html {
 </div>
 <h3 align="center">
 **Interested in working together?** \
-**Enter your email address below and I will reach out to you directly.**
+**Email me at aaron@midsprint.io**
 </h3>
 \
-
 \
-<h5 align="center">
-If you prefer, you can email me at [aaronzpearson\@outlook.com](mailto:aaronzpearson@outlook.com){.email}.
 \
 <hr>
+
+<p align="center"> Copyright midsprint Sports Science Consulting 2021</p>
+<p align="center"> All rights reserved</p>
 </body>
 </html>
