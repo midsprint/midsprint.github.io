@@ -10,7 +10,7 @@ navbar:
     - text: "Contact"
       href: "#contact"
     - text: "Previous Work"
-      href: https://www.midsprint.io/portfolio#previous-work
+      href:  <a href="https://midsprint.io/portfolio/big-data-bowl.html" target="_blank">Previous Work</a>
     - text: "Presentations"
       href: https://www.midsprint.io/portfolio#presentations
     - text: "Blog"
