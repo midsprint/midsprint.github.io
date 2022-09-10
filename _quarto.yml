@@ -49,6 +49,8 @@ website:
           href: blog/index.qmd
         - text: "Profiling Multiple Athletes with fvp"
           href: blog/fvp_split-apply-combine.qmd
+        - text: "Big Data Bowl 2022 Submission"
+          href: blog/bdb_22.qmd
         - text: "Modelling Cardiac Drift"
           href: blog/cardiac-drift.qmd
         - text: "Cleaning Catapult Data"
@@ -82,4 +84,4 @@ format:
     css: styles.css
     toc: true
     fontsize: large
-
+    smooth-scroll: true

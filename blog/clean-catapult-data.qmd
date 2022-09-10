@@ -12,6 +12,8 @@ url <- "https://github.com/aaronzpearson/midsprint-blog-data/blob/main/sample_ca
 suppressMessages(sample_data <- read_csv(url))
 ```
 
+
+
 ## The problem
 
 When working with raw catapult GPS or IMU data, you need to handle the first few lines of *meta-data* which includes info like date, time, and location of the session. This informaiton is less structured than you would normally find, being written in point-form. Below it are properly formatted variables and their subsequent observations.

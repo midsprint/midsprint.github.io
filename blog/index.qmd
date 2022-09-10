@@ -5,11 +5,14 @@ title: "Blog Posts"
 [**Profiling Multiple Athletes with fvp**](fvp_split-apply-combine.qmd)\
 Modelling multiple force-velocity-power profiles simultaneously using the *fvp* package.
 
+[**BDB 2022: The Punt Returner Shouldn't Return Punts**](bdb_22.qmd)\
+Big Data Bowl 2022 submission that tried to display that the punt returner should immediately lateral the ball to improve punt return yardage. 
+
 [**Modelling Cardiac Drift**](cardiac-drift.qmd)\
 Try to predict the increase of an athlete's heart rate over time during maintained aerobic conditioning.
 
 [**Cleaning Catapult Data**](clean-catapult-data.qmd)\
 Catapult data usually has meta-data at the top of the .csv file. This blog show you how to efficiently reading and cleaning Catapult data into R. A custom function is also provided at the bottom of the blog for easy replication.
 
-[**BDB '21: 5 Seconds or Less**](bdb_21.qmd)\
+[**BDB 2021: 5 Seconds or Less**](bdb_21.qmd)\
 Big Data Bowl 2021 submission that modelled athletes' sprint abilities to predict passing outcomes. This submission earned an honourable mention.
