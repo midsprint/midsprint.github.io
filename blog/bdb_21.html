@@ -23,7 +23,7 @@ ul.task-list{list-style: none;}
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
-<link href="../blog/cardiac-drift.html" rel="prev">
+<link href="../blog/clean-catapult-data.html" rel="prev">
 <link href="../images/midsprint-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -164,6 +164,11 @@ cookieconsent.run({
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../blog/clean-catapult-data.html" class="sidebar-item-text sidebar-link">Cleaning Catapult Data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../blog/bdb_21.html" class="sidebar-item-text sidebar-link active">Big Data Bowl 2021 Submission</a>
   </div>
 </li>
@@ -176,8 +181,7 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes" id="toc-seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes" class="nav-link active" data-scroll-target="#seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes">5 Seconds or Less: Modeling player biomechanics to predict pass outcomes</a>
-  <ul class="collapse">
+  <li><a href="#seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes" id="toc-seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes" class="nav-link active" data-scroll-target="#seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes">5 Seconds or Less: Modeling player biomechanics to predict pass outcomes</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><strong>1 Introduction</strong></a></li>
   <li><a href="#athlete-biomechanics" id="toc-athlete-biomechanics" class="nav-link" data-scroll-target="#athlete-biomechanics"><strong>2 Athlete Biomechanics</strong></a>
   <ul class="collapse">
@@ -197,7 +201,6 @@ cookieconsent.run({
   <li><a href="#tuning-the-model" id="toc-tuning-the-model" class="nav-link" data-scroll-target="#tuning-the-model"><strong>5.2 Tuning the Model</strong></a></li>
   </ul></li>
   <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications"><strong>6 Practical Applications</strong></a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -222,8 +225,9 @@ cookieconsent.run({
 
 </header>
 
-<section id="seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes" class="level1">
-<h1>5 Seconds or Less: Modeling player biomechanics to predict pass outcomes</h1>
+<section id="seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes">5 Seconds or Less: Modeling player biomechanics to predict pass outcomes</h2>
+</section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction"><strong>1 Introduction</strong></h2>
 <p>The 40-yard dash is one of the most exciting events tested at the NFL Combine. Prospects set-up in a three-point stance and, after a brief pause, start of their own volition. Time begins when the hand is released from the ground and stops when the player breaks the plane at 40 yards. Sprint times are typically five seconds or less.</p>
@@ -334,7 +338,6 @@ v^{-1}(\Delta d^{-1} (t)) = [\tau \cdot W(-e^\frac{1 - \Delta d + d_0}{\tau \cdo
 <p>The 40-yard dash lasts 5 seconds or less. Much of the current research states that players with higher top speeds have better career success. The research does not explore the correlation between results at the Combine and on-field performance. This paper illustrates that wide receivers,tight ends, and corner acks heavily rely on their rates of acceleration in-game. Moreover, they rarely reach speeds on the field that were reached during the NFL Combine’s 40-yard dash test. Scouts should focus on an athlete’s rate of acceleration, not their top-speed or 40-yard split, when assessing athletic abilities. The formulas presented in this paper, and the accompanying R package midsprint, provides scouts with a novel method of assessing prospects.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -513,8 +516,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../blog/cardiac-drift.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Modelling Cardiac Drift</span>
+      <a href="../blog/clean-catapult-data.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Cleaning Catapult Data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
