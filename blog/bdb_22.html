@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.260">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Midsprint - Big Data Bowl 2022 Submission</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<link href="../blog/cardiac-drift.html" rel="next">
+<link href="../blog/fvp_split-apply-combine.html" rel="prev">
+<link href="../images/midsprint-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Midsprint - Big Data Bowl 2022 Submission">
+<meta property="og:site-name" content="Midsprint">
+<meta name="twitter:title" content="Midsprint - Big Data Bowl 2022 Submission">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <img src="../images/midsprint-logo-white.png" alt="">
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../#about">About</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../#services">Services</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../#contact">Contact</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../blog/index.html" aria-current="page">Blog</a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/aaronzpearson"><i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aaronzpearson"><i class="bi bi-github" role="img" aria-label="Github">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Big Data Bowl 2022 Submission</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/index.html" class="sidebar-item-text sidebar-link">Blog Posts</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/fvp_split-apply-combine.html" class="sidebar-item-text sidebar-link">Profiling Multiple Athletes with fvp</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/bdb_22.html" class="sidebar-item-text sidebar-link active">Big Data Bowl 2022 Submission</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/cardiac-drift.html" class="sidebar-item-text sidebar-link">Modelling Cardiac Drift</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/clean-catapult-data.html" class="sidebar-item-text sidebar-link">Cleaning Catapult Data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/bdb_21.html" class="sidebar-item-text sidebar-link">Big Data Bowl 2021 Submission</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-punt-returner-shouldnt-return-punts---someone-else-should" id="toc-the-punt-returner-shouldnt-return-punts---someone-else-should" class="nav-link active" data-scroll-target="#the-punt-returner-shouldnt-return-punts---someone-else-should">The Punt Returner Shouldn’t Return Punts - Someone Else Should</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#modelling-change-of-direction-ability" id="toc-modelling-change-of-direction-ability" class="nav-link" data-scroll-target="#modelling-change-of-direction-ability">Modelling Change-of-Direction Ability</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#return-yardage" id="toc-return-yardage" class="nav-link" data-scroll-target="#return-yardage">Return Yardage</a></li>
+  <li><a href="#change-of-direction" id="toc-change-of-direction" class="nav-link" data-scroll-target="#change-of-direction">Change of Direction</a></li>
+  <li><a href="#rate-of-deceleration" id="toc-rate-of-deceleration" class="nav-link" data-scroll-target="#rate-of-deceleration">Rate of Deceleration</a></li>
+  <li><a href="#sprint-abilities" id="toc-sprint-abilities" class="nav-link" data-scroll-target="#sprint-abilities">Sprint Abilities</a></li>
+  </ul></li>
+  <li><a href="#sample-plays" id="toc-sample-plays" class="nav-link" data-scroll-target="#sample-plays">Sample Plays</a>
+  <ul class="collapse">
+  <li><a href="#further-results" id="toc-further-results" class="nav-link" data-scroll-target="#further-results">Further Results</a></li>
+  </ul></li>
+  <li><a href="#conclusions-and-future-work" id="toc-conclusions-and-future-work" class="nav-link" data-scroll-target="#conclusions-and-future-work">Conclusions and Future Work</a>
+  <ul class="collapse">
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Big Data Bowl 2022 Submission</h1>
+</div>
+
+
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="the-punt-returner-shouldnt-return-punts---someone-else-should" class="level2">
+<h2 class="anchored" data-anchor-id="the-punt-returner-shouldnt-return-punts---someone-else-should">The Punt Returner Shouldn’t Return Punts - Someone Else Should</h2>
+<p>The <strong>angle-velocity trade-off</strong> is the interplay between a player’s current speed and their ability to change direction. As such, we can theoretically identify the greatest speed an athlete can maintain for any given directional change. For example, if the punt returner catches the ball while in motion, they can maximize their change-of-direction ability which can help them effectively juke oncoming gunners. In doing so, the punt returner maximizes their punt return yardage. Punt returners who catch the ball while in motion also have increased risks of mistiming the catch and fumbling the ball. Therefore, this submission suggests that the punt returner should lateral the ball to a secondary player who is in motion to maximize return yardage while mitigating the risks.</p>
+</section>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>While the ball is in the air, the punt returner is looking up and receives information from teammates about oncoming gunners, play formations, and potential running routes. Once caught, the punt returner looks downfield, processes the information, and decides on their best course-of-action. If the punt returner has zero velocity at the time of the catch, they have limited ability to juke oncoming gunners. Instead, if the punt returner is provided cues from a teammate positioned obliquely on whether a lateral is appropriate, and the direction and distance of the lateral, the secondary player can process information about oncoming defenders effectively. In doing so, the secondary player can better process running routes while also maximizing their ability to effectively juke oncoming gunners.</p>
+<p>This submission expands on previous work that modelled a player’s mechanical sprint ability (https://www.kaggle.com/aaronzpearson/modeling-player-biomechanics). The model introduced in this submission is based on the following paper which quantifies a player’s change-of-direction ability: https://link.springer.com/article/10.1007%2Fs40279-018-0968-3. The authors state that a player’s intended change-of-direction impacts the maximal speed that they can maintain. For example, if a player is moving too quickly, they must decelerate to effectively manoeuvre on the field. The image below outlines the magnitude to which players must decelerate from maximal speeds to execute a given change-in-direction.</p>
+<p><img src="blog-images/bdb-22-cod-rgb.png" class="img-fluid"> <em>Credit: Dos’Santos et al., 2018</em></p>
+<p>Therefore, this submission hypothesizes that a secondary player can earn greater return yardage than the punt returner. The hypothesis is based on the model proposed by Don’Santos et al., 2018 wherein a player in motion has a greater ability to change-direction and evade oncoming gunners.</p>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>Data from the 2018-2019, 2019-2020, and 2020-2021 seasons were used to model a player’s change-of-direction ability. While cleaning the data, a player’s orientation was adjusted so that an orientation of 0 degrees resulted in the player facing the left goal-line. Orientation was then adjusted so that a player can rotate 0 to 180 degrees in either direction. Speed was binned every 0.2 yards/ second (i.e.&nbsp;(0, 0.2], (0.2, 0.4], etc.) and the greatest rate-of-change in orientation was extracted from the data set. Finally, a 3rd degree polynomial was fit to the data.</p>
+<section id="modelling-change-of-direction-ability" class="level3">
+<h3 class="anchored" data-anchor-id="modelling-change-of-direction-ability">Modelling Change-of-Direction Ability</h3>
+<p>The change-of-direction ability between the gunner and secondary player were compared to assess the proposed model.</p>
+<p>The secondary player was placed obliquely to the punt returner with 2.5 yards of lateral separation. They were assumed to run perpendicular to the punt returner and receive the ball 0.3 seconds after the punt is caught, parallel to the punt returner. The secondary player was also assumed to have a speed of 2.5 yards/ second (slow jog) when they received the lateral. Once the ball was secured, the secondary player was unimpeded in their maximal sprint efforts in any direction. The secondary player’s sprint abilities were previously modelled here [1]:</p>
+<p><span class="math display">\[
+v(t) = v_\max \cdot (1-e^\frac{-t}{\tau})\\
+\]</span></p>
+<p>where <span class="math inline">\(v(t)\)</span> represents an athlete’s velocity at time <span class="math inline">\(t\)</span>, <span class="math inline">\(v_\max\)</span> is an athlete’s maximum speed, and <span class="math inline">\(\tau\)</span> is the acceleration constant calculated:</p>
+<p><span class="math display">\[
+\tau = \frac{v_\max} {a_\max}
+\]</span></p>
+<p>where <span class="math inline">\(a_\max\)</span> is an athlete’s maximum acceleration.</p>
+<p>The secondary player’s sprint abilities were set as having a max speed of 10 yards/ second, a max acceleration of 15 yards/ second/ second, and a resulting acceleration constant of 0.67 seconds.</p>
+<p>Finally, the ability for a gunner to change direction was assessed. The gunner was assumed to be maintaining a consistent speed until the secondary player received the lateral. Once the secondary player has secured the ball and changed direction, the gunner would decelerate to the maximal speed for the intended change-of-direction to intercept the secondary player. The rate of deceleration over a given distance was modelled based on that of acceleration [2].</p>
+<p><span class="math display">\[
+\Delta d (t)= v_\max \cdot ((t + \tau) \cdot e^\frac{-t}{\tau}) - (v_\max \cdot \tau)
+\]</span></p>
+<p>where <span class="math inline">\(\Delta d(t)\)</span> represents the distance travelled from point <span class="math inline">\(d_0\)</span> to <span class="math inline">\(d_i\)</span> at time <span class="math inline">\(t\)</span>.</p>
+<p>To model deceleration, the inverse of formula 1 was adjusted so that it took on a player’s current speed and goal speed (goal speed &lt; current speed) [3]:</p>
+<p><span class="math display">\[
+v^{-1}(t) = ln[1- (\frac{v_i}{0.1} - 1)]\cdot\tau - ln[1 - (\frac{v_n}{0.1} - 1)]
+\]</span></p>
+<p>where <span class="math inline">\(v_i\)</span> is the player’s current speed and <span class="math inline">\(v_n\)</span> is the player’s goal speed. [2] was also adjusted so that the player’s max speed was replaced with the player’s current speed, and the time split, <span class="math inline">\(t\)</span> was that from [3].</p>
+<p><span class="math display">\[
+\Delta d (t)= v_i \cdot (t + \tau \cdot e^\frac{-t}{\tau}) - (v_i \cdot \tau)
+\]</span></p>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="return-yardage" class="level3">
+<h3 class="anchored" data-anchor-id="return-yardage">Return Yardage</h3>
+<p>Return yardage was plotted against the punt returner’s initial velocity. The plot shows that the greatest return distances during the 2018-2019 (black), 2019-2020 (red), and 2020-2021 (blue) seasons occurred when the punt returner was moving between 1 – 4 yards/ second. Please note that fair catches were removed from this plot.</p>
+<p><img src="blog-images/bdb-22-speed-v-return-yrds.png" class="img-fluid"></p>
+</section>
+<section id="change-of-direction" class="level3">
+<h3 class="anchored" data-anchor-id="change-of-direction">Change of Direction</h3>
+<p>Change of direction was capped at 90 degrees because it is unrealistic that a change-in-direction greater than such is feasible at 10Hz. Rather, it was assessed that such changes in direction were due to player impacts and improper data collection. The greatest rate-of-change was then modelled. The resulting model from the 2018-2019 (black) season followed the polynomial:</p>
+<p><span class="math display">\[
+cod(v) = -15.85v + 4.41v^2 - 0.23v^3 + 63.89
+\]</span></p>
+<p>where <span class="math inline">\(cod(v)\)</span> is the player’s change-of-direction ability at a given speed, and <span class="math inline">\(v\)</span> is a player’s speed in yards/ second. Models were similarly fit for the 2019-2020 and 2020-2021 seasons.</p>
+<p><img src="blog-images/bdb-22-vel-v-cod.png" class="img-fluid"></p>
+<p>The model assumed that the player’s change-of-direction ability did not differ between left and right. Therefore, the player’s abilities resulted as the following (note that the axes are flipped for aesthetic purposes):</p>
+<p><img src="blog-images/bdb-22-vel-v-cod2.png" class="img-fluid"></p>
+</section>
+<section id="rate-of-deceleration" class="level3">
+<h3 class="anchored" data-anchor-id="rate-of-deceleration">Rate of Deceleration</h3>
+<p>The player’s rate of deceleration was assessed by extracting the greatest speed an athlete maintained during their deceleration. The plot below shows a similar trend to those above: a player’s deceleration ability does not change by a large magnitude between seasons.</p>
+<p><img src="blog-images/bdb-22-time-to-decel.png" class="img-fluid"></p>
+</section>
+<section id="sprint-abilities" class="level3">
+<h3 class="anchored" data-anchor-id="sprint-abilities">Sprint Abilities</h3>
+<p>Finally, the gunner’s sprint abilities were modelled and fit, as demonstrated in the plot below:</p>
+<p><img src="blog-images/bdb-22-vel-v-time-fitted.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="sample-plays" class="level2">
+<h2 class="anchored" data-anchor-id="sample-plays">Sample Plays</h2>
+<p>Using the 2018-2019 data, a gunner’s median distance from the punt returner at the time of reception was 12.4 yards. Furthermore, at the time of reception, gunners had a median speed of 8.4 yards/ seconds, acceleration of 5.6 yards/ second/ second, and an acceleration constant that was modelled of 1.4 seconds. Therefore, the gunner’s maximal sprint abilities would allow them to reach the punt returner in 1.51 seconds. These values were utilized in the example below.</p>
+<p><img src="blog-images/bdb-22-schematic.png" class="img-fluid"></p>
+<p>In this example, the gunner has an initial maximum ability to change direction of 24.4 degrees. Within the secondary player’s allotted 1.21 seconds (1.51 seconds for the gunner to reach the punt returner minus 0.3 seconds for the lateral), they travelled linearly 7.83 yards. To intercept the secondary player, the gunner must change direction relative to the secondary player at 49.5 degrees. Therefore, the gunner must decelerate to 4.88 yards/ second which will take 0.77 seconds and 1.60 yards. This provides the gunner with 0.73 seconds to re-accelerate to reach the secondary player. In the example above, the time it takes to change direction and span the required distance takes a total of 2.30 seconds. The secondary player has ample time to continue their given path and evade the gunner.</p>
+<section id="further-results" class="level3">
+<h3 class="anchored" data-anchor-id="further-results">Further Results</h3>
+<p><img src="blog-images/bdb-22-results.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="conclusions-and-future-work" class="level2">
+<h2 class="anchored" data-anchor-id="conclusions-and-future-work">Conclusions and Future Work</h2>
+<p>The model built for this submission clearly indicates that the punt returner should lateral the ball to a secondary player to improve return yardage. Further research can model the impact of having the punt returner act as a blocker after they lateral the ball which can provide the secondary player greater ability to return the ball. Finally, there is reason to believe that a secondary player provides an option for the receiving team in that the gunner must choose a player to attack. As such, the punt returner can decide which player the gunner has chosen and lateral the ball when appropriate.</p>
+<section id="limitations" class="level3">
+<h3 class="anchored" data-anchor-id="limitations">Limitations</h3>
+<p>This submission is based in theory. Unfortunately, there are no observed plays where the punt returner immediately laterals the ball. Therefore, it is impractical to validate these findings.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../blog/fvp_split-apply-combine.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Profiling Multiple Athletes with fvp</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../blog/cardiac-drift.html" class="pagination-link">
+        <span class="nav-page-text">Modelling Cardiac Drift</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022, Midsprint Sports Science Consulting</div>   
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/aaronzpearson">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aaronzpearson">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:aaron@midsprint.io">
+      <i class="bi bi-envelope-fill" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

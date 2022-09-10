@@ -14,6 +14,13 @@
     "text": "Experience\nSports Science Intern | Montreal Canadiens Hockey Club (NHL)\nSept 2020 - August 2022\nSports Science Consultant | Various collegiate and professional teams\nSept 2019 - Present"
   },
   {
+    "objectID": "blog/affiliate-disclosure.html",
+    "href": "blog/affiliate-disclosure.html",
+    "title": "Midsprint",
+    "section": "",
+    "text": "Affiliate Disclosure\nBlog posts may contain affiliate links. Purchasing items through these links may result in me earning a small comission at no extra cost to you. These comissions help support this website."
+  },
+  {
     "objectID": "blog/bdb_21.html#introduction",
     "href": "blog/bdb_21.html#introduction",
     "title": "Big Data Bowl 2021 Submission",
@@ -54,6 +61,48 @@
     "title": "Big Data Bowl 2021 Submission",
     "section": "6 Practical Applications",
     "text": "6 Practical Applications\nThe 40-yard dash lasts 5 seconds or less. Much of the current research states that players with higher top speeds have better career success. The research does not explore the correlation between results at the Combine and on-field performance. This paper illustrates that wide receivers,tight ends, and corner acks heavily rely on their rates of acceleration in-game. Moreover, they rarely reach speeds on the field that were reached during the NFL Combine’s 40-yard dash test. Scouts should focus on an athlete’s rate of acceleration, not their top-speed or 40-yard split, when assessing athletic abilities. The formulas presented in this paper, and the accompanying R package midsprint, provides scouts with a novel method of assessing prospects."
+  },
+  {
+    "objectID": "blog/bdb_22.html",
+    "href": "blog/bdb_22.html",
+    "title": "Big Data Bowl 2022 Submission",
+    "section": "",
+    "text": "The angle-velocity trade-off is the interplay between a player’s current speed and their ability to change direction. As such, we can theoretically identify the greatest speed an athlete can maintain for any given directional change. For example, if the punt returner catches the ball while in motion, they can maximize their change-of-direction ability which can help them effectively juke oncoming gunners. In doing so, the punt returner maximizes their punt return yardage. Punt returners who catch the ball while in motion also have increased risks of mistiming the catch and fumbling the ball. Therefore, this submission suggests that the punt returner should lateral the ball to a secondary player who is in motion to maximize return yardage while mitigating the risks."
+  },
+  {
+    "objectID": "blog/bdb_22.html#background",
+    "href": "blog/bdb_22.html#background",
+    "title": "Big Data Bowl 2022 Submission",
+    "section": "Background",
+    "text": "Background\nWhile the ball is in the air, the punt returner is looking up and receives information from teammates about oncoming gunners, play formations, and potential running routes. Once caught, the punt returner looks downfield, processes the information, and decides on their best course-of-action. If the punt returner has zero velocity at the time of the catch, they have limited ability to juke oncoming gunners. Instead, if the punt returner is provided cues from a teammate positioned obliquely on whether a lateral is appropriate, and the direction and distance of the lateral, the secondary player can process information about oncoming defenders effectively. In doing so, the secondary player can better process running routes while also maximizing their ability to effectively juke oncoming gunners.\nThis submission expands on previous work that modelled a player’s mechanical sprint ability (https://www.kaggle.com/aaronzpearson/modeling-player-biomechanics). The model introduced in this submission is based on the following paper which quantifies a player’s change-of-direction ability: https://link.springer.com/article/10.1007%2Fs40279-018-0968-3. The authors state that a player’s intended change-of-direction impacts the maximal speed that they can maintain. For example, if a player is moving too quickly, they must decelerate to effectively manoeuvre on the field. The image below outlines the magnitude to which players must decelerate from maximal speeds to execute a given change-in-direction.\n Credit: Dos’Santos et al., 2018\nTherefore, this submission hypothesizes that a secondary player can earn greater return yardage than the punt returner. The hypothesis is based on the model proposed by Don’Santos et al., 2018 wherein a player in motion has a greater ability to change-direction and evade oncoming gunners."
+  },
+  {
+    "objectID": "blog/bdb_22.html#methods",
+    "href": "blog/bdb_22.html#methods",
+    "title": "Big Data Bowl 2022 Submission",
+    "section": "Methods",
+    "text": "Methods\nData from the 2018-2019, 2019-2020, and 2020-2021 seasons were used to model a player’s change-of-direction ability. While cleaning the data, a player’s orientation was adjusted so that an orientation of 0 degrees resulted in the player facing the left goal-line. Orientation was then adjusted so that a player can rotate 0 to 180 degrees in either direction. Speed was binned every 0.2 yards/ second (i.e. (0, 0.2], (0.2, 0.4], etc.) and the greatest rate-of-change in orientation was extracted from the data set. Finally, a 3rd degree polynomial was fit to the data.\n\nModelling Change-of-Direction Ability\nThe change-of-direction ability between the gunner and secondary player were compared to assess the proposed model.\nThe secondary player was placed obliquely to the punt returner with 2.5 yards of lateral separation. They were assumed to run perpendicular to the punt returner and receive the ball 0.3 seconds after the punt is caught, parallel to the punt returner. The secondary player was also assumed to have a speed of 2.5 yards/ second (slow jog) when they received the lateral. Once the ball was secured, the secondary player was unimpeded in their maximal sprint efforts in any direction. The secondary player’s sprint abilities were previously modelled here [1]:\n\\[\nv(t) = v_\\max \\cdot (1-e^\\frac{-t}{\\tau})\\\\\n\\]\nwhere \\(v(t)\\) represents an athlete’s velocity at time \\(t\\), \\(v_\\max\\) is an athlete’s maximum speed, and \\(\\tau\\) is the acceleration constant calculated:\n\\[\n\\tau = \\frac{v_\\max} {a_\\max}\n\\]\nwhere \\(a_\\max\\) is an athlete’s maximum acceleration.\nThe secondary player’s sprint abilities were set as having a max speed of 10 yards/ second, a max acceleration of 15 yards/ second/ second, and a resulting acceleration constant of 0.67 seconds.\nFinally, the ability for a gunner to change direction was assessed. The gunner was assumed to be maintaining a consistent speed until the secondary player received the lateral. Once the secondary player has secured the ball and changed direction, the gunner would decelerate to the maximal speed for the intended change-of-direction to intercept the secondary player. The rate of deceleration over a given distance was modelled based on that of acceleration [2].\n\\[\n\\Delta d (t)= v_\\max \\cdot ((t + \\tau) \\cdot e^\\frac{-t}{\\tau}) - (v_\\max \\cdot \\tau)\n\\]\nwhere \\(\\Delta d(t)\\) represents the distance travelled from point \\(d_0\\) to \\(d_i\\) at time \\(t\\).\nTo model deceleration, the inverse of formula 1 was adjusted so that it took on a player’s current speed and goal speed (goal speed < current speed) [3]:\n\\[\nv^{-1}(t) = ln[1- (\\frac{v_i}{0.1} - 1)]\\cdot\\tau - ln[1 - (\\frac{v_n}{0.1} - 1)]\n\\]\nwhere \\(v_i\\) is the player’s current speed and \\(v_n\\) is the player’s goal speed. [2] was also adjusted so that the player’s max speed was replaced with the player’s current speed, and the time split, \\(t\\) was that from [3].\n\\[\n\\Delta d (t)= v_i \\cdot (t + \\tau \\cdot e^\\frac{-t}{\\tau}) - (v_i \\cdot \\tau)\n\\]"
+  },
+  {
+    "objectID": "blog/bdb_22.html#results",
+    "href": "blog/bdb_22.html#results",
+    "title": "Big Data Bowl 2022 Submission",
+    "section": "Results",
+    "text": "Results\n\nReturn Yardage\nReturn yardage was plotted against the punt returner’s initial velocity. The plot shows that the greatest return distances during the 2018-2019 (black), 2019-2020 (red), and 2020-2021 (blue) seasons occurred when the punt returner was moving between 1 – 4 yards/ second. Please note that fair catches were removed from this plot.\n\n\n\nChange of Direction\nChange of direction was capped at 90 degrees because it is unrealistic that a change-in-direction greater than such is feasible at 10Hz. Rather, it was assessed that such changes in direction were due to player impacts and improper data collection. The greatest rate-of-change was then modelled. The resulting model from the 2018-2019 (black) season followed the polynomial:\n\\[\ncod(v) = -15.85v + 4.41v^2 - 0.23v^3 + 63.89\n\\]\nwhere \\(cod(v)\\) is the player’s change-of-direction ability at a given speed, and \\(v\\) is a player’s speed in yards/ second. Models were similarly fit for the 2019-2020 and 2020-2021 seasons.\n\nThe model assumed that the player’s change-of-direction ability did not differ between left and right. Therefore, the player’s abilities resulted as the following (note that the axes are flipped for aesthetic purposes):\n\n\n\nRate of Deceleration\nThe player’s rate of deceleration was assessed by extracting the greatest speed an athlete maintained during their deceleration. The plot below shows a similar trend to those above: a player’s deceleration ability does not change by a large magnitude between seasons.\n\n\n\nSprint Abilities\nFinally, the gunner’s sprint abilities were modelled and fit, as demonstrated in the plot below:"
+  },
+  {
+    "objectID": "blog/bdb_22.html#sample-plays",
+    "href": "blog/bdb_22.html#sample-plays",
+    "title": "Big Data Bowl 2022 Submission",
+    "section": "Sample Plays",
+    "text": "Sample Plays\nUsing the 2018-2019 data, a gunner’s median distance from the punt returner at the time of reception was 12.4 yards. Furthermore, at the time of reception, gunners had a median speed of 8.4 yards/ seconds, acceleration of 5.6 yards/ second/ second, and an acceleration constant that was modelled of 1.4 seconds. Therefore, the gunner’s maximal sprint abilities would allow them to reach the punt returner in 1.51 seconds. These values were utilized in the example below.\n\nIn this example, the gunner has an initial maximum ability to change direction of 24.4 degrees. Within the secondary player’s allotted 1.21 seconds (1.51 seconds for the gunner to reach the punt returner minus 0.3 seconds for the lateral), they travelled linearly 7.83 yards. To intercept the secondary player, the gunner must change direction relative to the secondary player at 49.5 degrees. Therefore, the gunner must decelerate to 4.88 yards/ second which will take 0.77 seconds and 1.60 yards. This provides the gunner with 0.73 seconds to re-accelerate to reach the secondary player. In the example above, the time it takes to change direction and span the required distance takes a total of 2.30 seconds. The secondary player has ample time to continue their given path and evade the gunner.\n\nFurther Results"
+  },
+  {
+    "objectID": "blog/bdb_22.html#conclusions-and-future-work",
+    "href": "blog/bdb_22.html#conclusions-and-future-work",
+    "title": "Big Data Bowl 2022 Submission",
+    "section": "Conclusions and Future Work",
+    "text": "Conclusions and Future Work\nThe model built for this submission clearly indicates that the punt returner should lateral the ball to a secondary player to improve return yardage. Further research can model the impact of having the punt returner act as a blocker after they lateral the ball which can provide the secondary player greater ability to return the ball. Finally, there is reason to believe that a secondary player provides an option for the receiving team in that the gunner must choose a player to attack. As such, the punt returner can decide which player the gunner has chosen and lateral the ball when appropriate.\n\nLimitations\nThis submission is based in theory. Unfortunately, there are no observed plays where the punt returner immediately laterals the ball. Therefore, it is impractical to validate these findings."
   },
   {
     "objectID": "blog/blog-posts.html",
@@ -117,13 +166,6 @@
     "title": "Modelling Cardia Drift",
     "section": "Application",
     "text": "Application\nThis information can be applied to the critical velocity model. The external expression of an increase in heart rate is the decrease in an athlete’s critical velocity. As such, we should expect to see that the athlete either relies more on anaerobic energy over time to sustain a given pace or that their pace decreases to maximize their use of aerobic energy."
-  },
-  {
-    "objectID": "blog/clean-catapult-data.html",
-    "href": "blog/clean-catapult-data.html",
-    "title": "Efficiently Cleaning Catapult Data",
-    "section": "",
-    "text": "suppressMessages(library(tidyverse))\nsuppressMessages(library(janitor))\n\nurl <- \"https://github.com/aaronzpearson/midsprint-blog-data/blob/main/sample_catapult.csv?raw=true\"\n\nsuppressMessages(sample_data <- read_csv(url))"
   },
   {
     "objectID": "blog/clean-catapult-data.html#the-problem",
@@ -207,7 +249,7 @@
     "href": "blog/index.html",
     "title": "Blog Posts",
     "section": "",
-    "text": "Modelling Cardiac Drift\nTry to predict the increase of an athlete’s heart rate over time during maintained aerobic conditioning.\nCleaning Catapult Data\nCatapult data usually has meta-data at the top of the .csv file. This blog show you how to efficiently reading and cleaning Catapult data into R. A custom function is also provided at the bottom of the blog for easy replication.\nBDB ’21: 5 Seconds or Less\nBig Data Bowl 2021 submission that modelled athletes’ sprint abilities to predict passing outcomes. This submission earned an honourable mention."
+    "text": "BDB 2022: The Punt Returner Shouldn’t Return Punts\nBig Data Bowl 2022 submission that tried to display that the punt returner should immediately lateral the ball to improve punt return yardage.\nModelling Cardiac Drift\nTry to predict the increase of an athlete’s heart rate over time during maintained aerobic conditioning.\nCleaning Catapult Data\nCatapult data usually has meta-data at the top of the .csv file. This blog show you how to efficiently reading and cleaning Catapult data into R. A custom function is also provided at the bottom of the blog for easy replication.\nBDB 2021: 5 Seconds or Less\nBig Data Bowl 2021 submission that modelled athletes’ sprint abilities to predict passing outcomes. This submission earned an honourable mention."
   },
   {
     "objectID": "index.html#education",
