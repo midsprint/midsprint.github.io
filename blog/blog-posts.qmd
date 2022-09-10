@@ -1,0 +1,10 @@
+---
+title: "Blog Posts"
+listing: 
+  contents: posts
+  type: table
+  sort: "date desc"
+  table-hover: true
+  categories: true
+  filter-ui: true
+---

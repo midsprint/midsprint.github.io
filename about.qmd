@@ -1,0 +1,65 @@
+---
+title: ""
+about:
+  template: trestles
+  image: images/headshot-tall.png
+  id: hero-heading
+  links: 
+    - icon: twitter
+      href: https://twitter.com/aaronzpearson
+    - icon: github
+      href: https://github.com/aaronzpearson
+    - icon: envelope-fill
+      href: mailto:aaron@midsprint.io
+---
+
+\
+\
+\
+
+<center>
+<iframe width="90%" height="315" src="https://www.youtube.com/embed/4NanFCn1FAI?controls=0" title="Modelling Anarobic Energy Balance" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</center>
+
+\
+\
+
+:::{#hero-heading}
+
+**Aaron Pearson** is at the intersection of quantitative physiology and sports analytics. When he isn't coding, he can be found rock climbing, hiking, and camping. 
+
+## Education
+
+**MSc Exercise Science**\
+University of Montreal \| Montreal, QC
+
+**BSc Kinesiology & Statistics**\
+Simon Fraser University \| Vancouver, BC
+
+## Experience
+
+**Sports Science Intern** \| Montreal Canadiens Hockey Club (NHL)\
+Sept 2020 - August 2022
+
+**Sports Science Consultant** \| Various collegiate and professional teams\
+Sept 2019 - Present
+
+:::
+
+
+### Services
+\
+**Aerobic and anaerobic qualities** which include critical speed, anaerobic capacity, maximal aerobic speed, and VO2max. Modelling these attributes using GPS data decreases the amount of fitness testing, and maximizes the amount of time with the coach.
+
+**Mechanical sprint abilities** provide insight into how an athlete responds to training, their physical status, and return-to-play readiness. This information also provides coaches with the ability to maximize players performance with better match-ups and positions.
+
+**Energy balance** can be modelled using real-time positional tracking data. This provides coaches with an advantage of understanding which players are tired and how to best adjust playing tactics.
+
+**Fitness changes over the course of a season** are very important to track. While the goal is for fitness to increase, seeing decreases in fitness can lead to decreases in performance and the amount of playing time that players can endure.
+\
+\
+
+### Contact
+\
+**Interested in working together?** Email [aaron@midsprint.io](mailto:aaron@midsprint.io)

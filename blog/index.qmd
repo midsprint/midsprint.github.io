@@ -1,0 +1,12 @@
+---
+title: "Blog Posts"
+---
+
+[**Profiling Multiple Athletes with fvp**](fvp_split-apply-combine.qmd)\
+Modelling multiple force-velocity-power profiles simultaneously using the *fvp* package.
+
+[**Modelling Cardiac Drift**](cardiac-drift.qmd)\
+Try to predict the increase of an athlete's heart rate over time during maintained aerobic conditioning.
+
+[**BDB '21: 5 Seconds or Less**](bdb_21.qmd)\
+Big Data Bowl 2021 submission that modelled athletes' sprint abilities to predict passing outcomes. This submission earned an honourable mention.

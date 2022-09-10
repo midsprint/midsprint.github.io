@@ -1,0 +1,87 @@
+---
+title: ""
+about:
+  template: trestles
+  image: images/headshot-tall.png
+  id: hero-heading
+  links: 
+    - icon: twitter
+      href: https://twitter.com/aaronzpearson
+    - icon: github
+      href: https://github.com/aaronzpearson
+    - icon: envelope-fill
+      href: mailto:aaron@midsprint.io
+---
+
+\
+\
+\
+
+<center>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/4NanFCn1FAI?controls=0" title="Modelling Anarobic Energy Balance" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</center>
+
+\
+<div id="about">
+\
+
+
+:::{#hero-heading}
+
+**Aaron Pearson** is at the intersection of quantitative physiology and sports analytics. When he isn't coding, he can be found rock climbing, hiking, and camping. 
+
+## Education
+
+**MSc Exercise Science**\
+University of Montreal \| Montreal, QC
+
+**BSc Kinesiology & Statistics**\
+Simon Fraser University \| Vancouver, BC
+
+## Experience
+
+**Sports Science Intern** \| Montreal Canadiens Hockey Club (NHL)\
+Sept 2020 - August 2022
+
+**Sports Science Consultant** \| Various collegiate and professional teams\
+Sept 2019 - Present
+
+:::
+\
+
+### Background
+
+\
+**Sports analytics competitions** exposed Aaron to the fact that sports and exercise science are often overlooked during strategic planning. Aaron competed in two of the NFL's Big Data Bowls where he modelled how athletes' sprint and change-of-direction abilities can influence pass and punt return outcomes, respectively.
+
+**R packages** allowed Aaron to give back to the sports science community. Aaron's first package, midsprint, was built as part of his first Big Data Bowl submission. He has since expanded his work to embody the need for greater transparency in sports science research. So far, Aaron has written five R packages. The most-recent package, interlimb, was released in conjunction with his Masters thesis.
+
+**Aaron Pearson** earned his MSc in exercise science from the University of Montreal. His work explored the relationships between asymmetries derived during dryland fitness tests and on-ice stride-by-stride data. During his Masters, Aaron gained experience in force plate, dynamometer, and IMU data.
+
+**During his undergrad**, Aaron worked with GPS and IMU data to model critical speed and anaerobic capacity in professional women's and collegiate men's soccer. 
+
+**Modelling athletes' abilities** earned Aaron first place at the Vancouver Sports Analytics Symposium and Hackathon (VanSASH) and an honorable mention in the 2021 NFL Big Data Bowl.
+
+</div>
+\
+<div id="services">
+
+### Services
+\
+**Aerobic and anaerobic qualities** which include critical speed, anaerobic capacity, maximal aerobic speed, and VO2max. Modelling these attributes using GPS data decreases the amount of fitness testing, and maximizes the amount of time with the coach.
+
+**Mechanical sprint abilities** provide insight into how an athlete responds to training, their physical status, and return-to-play readiness. This information also provides coaches with the ability to maximize players performance with better match-ups and positions.
+
+**Energy balance** can be modelled using real-time positional tracking data. This provides coaches with an advantage of understanding which players are tired and how to best adjust playing tactics.
+
+**Fitness changes over the course of a season** are very important to track. While the goal is for fitness to increase, seeing decreases in fitness can lead to decreases in performance and the amount of playing time that players can endure.
+</div>
+\
+<div id="contact">
+
+### Contact
+\
+**Interested in working together?** Email [aaron@midsprint.io](mailto:aaron@midsprint.io)
+
+</div>
