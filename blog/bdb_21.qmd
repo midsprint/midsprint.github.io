@@ -6,7 +6,7 @@ title: "Big Data Bowl 2021 Submission"
 library(tidyverse)
 ```
 
-# 5 Seconds or Less: Modeling player biomechanics to predict pass outcomes
+## 5 Seconds or Less: Modeling player biomechanics to predict pass outcomes
 
 ## **1 Introduction**
 

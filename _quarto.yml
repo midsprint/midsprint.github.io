@@ -38,6 +38,7 @@ website:
         aria-label: Github
         
   sidebar:
+  
     - id: blog
       title: "Blog"
       style: "floating"
@@ -50,8 +51,11 @@ website:
           href: blog/fvp_split-apply-combine.qmd
         - text: "Modelling Cardiac Drift"
           href: blog/cardiac-drift.qmd
+        - text: "Cleaning Catapult Data"
+          href: blog/clean-catapult-data.qmd
         - text: "Big Data Bowl 2021 Submission"
           href: blog/bdb_21.qmd
+          
     - title: " "
         
     

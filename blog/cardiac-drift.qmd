@@ -12,9 +12,9 @@ suppressMessages(gps_data <- read_csv(url))
 
 
 
-## Using Linear Regressions to Model Cardia Drift Using GPS Data
+**Using Linear Regressions to Model Cardia Drift Using GPS Data**
 
-### Tracking Heart Rate
+## Tracking Heart Rate
 
 Smart watches provide a somple method to track your heart rate throughout your day. Heart rate can provide feedback on sleep quality, training readiness, and overall recovery rates.
 
@@ -37,7 +37,7 @@ When an athlete wants to maintain a given pace, they need to overcome these by-p
 library(tidyverse) # for tidy code
 ```
 
-### Load the Data
+## Load the Data
 
 The data is available on my GitHub repository and can be downloaded using the code below. 
 
@@ -54,7 +54,7 @@ The data structure:
 summary(gps_data)
 ```
 
-### Cleaning the Data
+## Cleaning the Data
 
 To clean the data, we'll remove when the athlete did not record any data. 
 
@@ -67,7 +67,7 @@ gps_data <- gps_data %>% # write over initial data set
         )
 ```
 
-### Visualizing the Data
+## Visualizing the Data
 
 Plotting heart rate and power versus time.
 
@@ -83,7 +83,7 @@ ggplot(gps_data, aes(x = secs)) + # only set x-axis because of 2 dependent varia
 ```
 
 
-### The Linear Model
+## The Linear Model
 
 Below is some code to visualize an athlete’s increase in heart-rate while working at nearly the same rate for 45 minutes.
 
@@ -115,7 +115,7 @@ ggplot(gps_data, aes(x = secs)) + # only set x-axis because of 2 dependent varia
     xlab("Time (s)") + ylab("Power (W), Heart Rate (bpm)")
 ```
 
-### Predicted Outcomes
+## Predicted Outcomes
 
 Using some quick math, we can estimate the athlete's heart rate, Since there are spikes in power output, we'll e conservative and use its 75th percentile.
 
@@ -127,6 +127,6 @@ Manually calculating the athlete's fitted heart rate 3/4 through the race result
 
 In the end, we see that the athlete’s heart rate is expected to increase by 16 beats per minute after 45-50 minutes of sustained exercise.
 
-### Application
+## Application
 
 This information can be applied to the critical velocity model. The external expression of an increase in heart rate is the decrease in an athlete’s critical velocity. As such, we should expect to see that the athlete either relies more on anaerobic energy over time to sustain a given pace or that their pace decreases to maximize their use of aerobic energy.
