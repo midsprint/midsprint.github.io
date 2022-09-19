@@ -87,7 +87,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <link href="../blog/bdb_22.html" rel="next">
-<link href="../blog/index.html" rel="prev">
+<link href="../blog/la-threshold.html" rel="prev">
 <link href="../images/midsprint-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
-  "notice_banner_type":"simple",
+  "notice_banner_type":"headline",
   "consent_type":"express",
   "palette":"light",
   "language":"en",
@@ -212,7 +212,12 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/index.html" class="sidebar-item-text sidebar-link">Blog Posts</a>
+  <a href="../blog/index.html" class="sidebar-item-text sidebar-link"><strong>Blog Posts</strong></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/la-threshold.html" class="sidebar-item-text sidebar-link">Identifying the Lactate Threshold</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -282,7 +287,33 @@ cookieconsent.run({
 <p>A while ago, I was asked how to use <em>fvp</em> to profile multiple athletes at once.</p>
 <p>At the time, I had trouble working it out. Luckily, a current project required a similar task and I figured that I would try my hand at profiling multiple athletes using the <em>fvp</em> package again.</p>
 <p>An oversight of mine is that the fvp package isn’t setup to work well with the tidyverse (this might change with future updates). Therefore, we can’t rely on the <code>group_by()</code>, <code>nest()</code> and <code>map()</code> combination to apply functions to multiple players at once. Instead, we can rely on base R’s equivalent of <code>split-apply-combine</code> which, in this case, will rely on the <code>split()</code>, <code>lapply()</code>, and <code>rbind()</code> functions.</p>
-<p>For this blog post, we’ll look at two scenarios: 1. creating a <code>data.frame</code> per athlete that can then be called upon for further analyses, and 2. reporting summarized data as a single <code>data.frame</code>.</p>
+<p>For this blog post, we’ll look at two scenarios: 1. creating a <code>data.frame</code> per athlete that can then be called upon for further analyses, and 2. reporting summarized data as a single <code>data.frame</code>.<br>
+<br>
+</p>
+
+<form action="http://newsletters.midsprint.io/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank" class="form-control; border-0">
+  
+
+<div class="d-grid gap-0 col-6 mx-auto">
+<center>
+    <input style="font-size:smaller;" class="form-control; w-75" placeholder="Enter email" type="email" name="member[email]" id="member_email" aria-describedby="emailHelp">
+    </center>
+  </div>
+
+
+  <div class="d-grid gap-0 col-6 mx-auto">
+<center>    
+<button class="btn btn-primary btn-block; w-75" type="submit" name="member[subscribe]" id="member_submit"><span style="font-size:smaller;">Join the Midsprint Newsletter
+</span>
+</button>
+</center>
+  </div>
+  </form>
+
+
+<p id="emailHelp" class="form-text text-muted" style="font-size:10px;" align="center">
+We'll never share or sell your email address. By subscribing, you agree with Revue’s <a target="_blank" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" href="https://www.getrevue.co/privacy">Privacy Policy</a>.
+</p>
 <section id="install-and-load-packages" class="level2">
 <h2 class="anchored" data-anchor-id="install-and-load-packages">Install and Load Packages</h2>
 <p>Install the <em>fvp</em> package if needed:</p>
@@ -443,7 +474,7 @@ $`2550257`
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Observed Speed (yards/ s)"</span>) <span class="sc">+</span></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Split Time (s)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="fvp_split-apply-combine_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="fvp_split-apply-combine_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -471,6 +502,21 @@ $`2550257`
 </div>
 </div>
 <p>Using the speed-accel function on the players’ data sets, we are returned their summarized data. The speed-accel profiles look similar with player <code>2550257</code> slightly faster and player <code>2543699</code> slightly more accerlation dominant.</p>
+<p><br>
+<br>
+</p>
+<form action="http://newsletters.midsprint.io/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank" class="form-control; border-0">
+  
+  <div class="d-grid gap-0 col-6 mx-auto">
+    <input style="font-size:smaller;" class="form-control" placeholder="Enter email" type="email" name="member[email]" id="member_email" aria-describedby="emailHelp">
+  </div>
+  
+  <div class="d-grid gap-0 col-6 mx-auto">
+    <button class="btn btn-primary btn-block" type="submit" name="member[subscribe]" id="member_submit"><span style="font-size:smaller;">Join the Midsprint Newsletter</span></button>
+  </div>
+  </form>
+
+<p id="emailHelp" class="form-text text-muted" style="font-size:10px;">We'll never share or sell your email address. By subscribing, you agree with Revue’s <a target="_blank" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" href="https://www.getrevue.co/privacy">Privacy Policy</a>.</p>
 
 
 </section>
@@ -651,8 +697,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../blog/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Blog Posts</span>
+      <a href="../blog/la-threshold.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Identifying the Lactate Threshold</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -668,6 +714,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../disclaimer.html">Disclaimer</a>
+  </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/aaronzpearson">
       <i class="bi bi-twitter" role="img">

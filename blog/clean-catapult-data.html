@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
-  "notice_banner_type":"simple",
+  "notice_banner_type":"headline",
   "consent_type":"express",
   "palette":"light",
   "language":"en",
@@ -212,7 +212,12 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/index.html" class="sidebar-item-text sidebar-link">Blog Posts</a>
+  <a href="../blog/index.html" class="sidebar-item-text sidebar-link"><strong>Blog Posts</strong></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/la-threshold.html" class="sidebar-item-text sidebar-link">Identifying the Lactate Threshold</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -292,7 +297,33 @@ cookieconsent.run({
 </div>
 <section id="the-problem" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem">The problem</h2>
-<p>When working with raw catapult GPS or IMU data, you need to handle the first few lines of <em>meta-data</em> which includes info like date, time, and location of the session. This informaiton is less structured than you would normally find, being written in point-form. Below it are properly formatted variables and their subsequent observations.</p>
+<p>When working with raw catapult GPS or IMU data, you need to handle the first few lines of <em>meta-data</em> which includes info like date, time, and location of the session. This informaiton is less structured than you would normally find, being written in point-form. Below it are properly formatted variables and their subsequent observations.<br>
+<br>
+</p>
+
+<form action="http://newsletters.midsprint.io/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank" class="form-control; border-0">
+  
+
+<div class="d-grid gap-0 col-6 mx-auto">
+<center>
+    <input style="font-size:smaller;" class="form-control; w-75" placeholder="Enter email" type="email" name="member[email]" id="member_email" aria-describedby="emailHelp">
+    </center>
+  </div>
+
+
+  <div class="d-grid gap-0 col-6 mx-auto">
+<center>    
+<button class="btn btn-primary btn-block; w-75" type="submit" name="member[subscribe]" id="member_submit"><span style="font-size:smaller;">Join the Midsprint Newsletter
+</span>
+</button>
+</center>
+  </div>
+  </form>
+
+
+<p id="emailHelp" class="form-text text-muted" style="font-size:10px;" align="center">
+We'll never share or sell your email address. By subscribing, you agree with Revue’s <a target="_blank" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" href="https://www.getrevue.co/privacy">Privacy Policy</a>.
+</p>
 </section>
 <section id="load-libraries-and-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries-and-data">Load Libraries and Data</h2>
@@ -444,6 +475,21 @@ cookieconsent.run({
 [6,]       TRUE        TRUE</code></pre>
 </div>
 </div>
+<p><br>
+<br>
+</p>
+<form action="http://newsletters.midsprint.io/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank" class="form-control; border-0">
+  
+  <div class="d-grid gap-0 col-6 mx-auto">
+    <input style="font-size:smaller;" class="form-control" placeholder="Enter email" type="email" name="member[email]" id="member_email" aria-describedby="emailHelp">
+  </div>
+  
+  <div class="d-grid gap-0 col-6 mx-auto">
+    <button class="btn btn-primary btn-block" type="submit" name="member[subscribe]" id="member_submit"><span style="font-size:smaller;">Join the Midsprint Newsletter</span></button>
+  </div>
+  </form>
+
+<p id="emailHelp" class="form-text text-muted" style="font-size:10px;">We'll never share or sell your email address. By subscribing, you agree with Revue’s <a target="_blank" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" href="https://www.getrevue.co/privacy">Privacy Policy</a>.</p>
 
 
 </section>
@@ -642,6 +688,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../disclaimer.html">Disclaimer</a>
+  </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/aaronzpearson">
       <i class="bi bi-twitter" role="img">

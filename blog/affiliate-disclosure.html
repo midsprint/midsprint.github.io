@@ -60,7 +60,7 @@ ul.task-list{list-style: none;}
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
-  "notice_banner_type":"simple",
+  "notice_banner_type":"headline",
   "consent_type":"express",
   "palette":"light",
   "language":"en",
@@ -143,7 +143,12 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/index.html" class="sidebar-item-text sidebar-link">Blog Posts</a>
+  <a href="../blog/index.html" class="sidebar-item-text sidebar-link"><strong>Blog Posts</strong></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/la-threshold.html" class="sidebar-item-text sidebar-link">Identifying the Lactate Threshold</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,9 +188,37 @@ cookieconsent.run({
 
 
 
-<div class="list-group">
-  <a class="list-group-item list-group-item-action" style="font-size:10px"><strong> Affiliate Disclosure</strong><br>
-Blog posts may contain affiliate links. Purchasing items through these links may result in me earning a small comission at no extra cost to you. These comissions help support this website.</a>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <p class="accordion-header" id="headingOne">
+      <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size:10px">
+        <strong>Affiliate Disclosure</strong>
+      </button>
+    </p>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+      <div class="accordion-body" style="font-size:10px">
+        Blog posts may contain affiliate links.
+Purchasing items through these links may result in me earning a small comission at no extra cost to you which helps support this website.
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-grid gap-2 col-6 mx-auto">
+<div class="btn-group">
+<a href="https://google.com" target="_blank" class="btn btn-primary btn-block" role="button"><i class="bi bi-badge-ad"></i>
+<span style="font-size:smaller;">&nbsp;&nbsp;&nbsp; Pick Up Your Copy of the NSCA's <i>Essentials of Sport Science</i> Here</span></a>
+   &nbsp;
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><id="offcanvasleftlabel" style="font-size:smaller;">Learn More</id="offcanvasleftlabel"></button>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    ...
+  </div>
+</div>
+</div>
 </div>
 
 
@@ -371,6 +404,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../disclaimer.html">Disclaimer</a>
+  </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/aaronzpearson">
       <i class="bi bi-twitter" role="img">

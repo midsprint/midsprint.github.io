@@ -61,7 +61,7 @@ ul.task-list{list-style: none;}
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
-  "notice_banner_type":"simple",
+  "notice_banner_type":"headline",
   "consent_type":"express",
   "palette":"light",
   "language":"en",
@@ -149,7 +149,12 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/index.html" class="sidebar-item-text sidebar-link">Blog Posts</a>
+  <a href="../blog/index.html" class="sidebar-item-text sidebar-link"><strong>Blog Posts</strong></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/la-threshold.html" class="sidebar-item-text sidebar-link">Identifying the Lactate Threshold</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -238,7 +243,33 @@ cookieconsent.run({
 <p>The 40-yard dash is one of the most exciting events tested at the NFL Combine. Prospects set-up in a three-point stance and, after a brief pause, start of their own volition. Time begins when the hand is released from the ground and stops when the player breaks the plane at 40 yards. Sprint times are typically five seconds or less.</p>
 <p>In those five seconds, players display their ability to produce force and power. Within position groups, the fastest players are drafted earlier and have more career success. Unfortunately, much of the data surrounding their career success and abilities are descriptive in nature. Research has also shown that the fastest 40-yard splits are run by players with the greatest top-speeds. Yet there is very little evidence that the 40-yard dash translates to an athlete’s on-field mechanical sprint abilities.</p>
 <p>Players rarely reach their top-speed during games. Passing plays that last 4 to 6 seconds challenge receivers to create space between themselves and the defender. It is their ability to juke, deke, cut, and feint that creates this space. Conversely, defenders attempt to remain in proximity of the receiver by mirroring these changes in speed and direction. These factors affect a player’s ability to reach their top-speed.</p>
-<p>This paper explores the relationship between an athlete’s sprint kinetics and pass completion rates. Specifically, it aims to explore whether modeling an athlete’s mechanical sprint profile to cover a given distance can influence pass outcomes. Background information on modeling an athlete’s mechanical sprint abilities is provided as a framework for new methodologies that can be applied in-game.</p>
+<p>This paper explores the relationship between an athlete’s sprint kinetics and pass completion rates. Specifically, it aims to explore whether modeling an athlete’s mechanical sprint profile to cover a given distance can influence pass outcomes. Background information on modeling an athlete’s mechanical sprint abilities is provided as a framework for new methodologies that can be applied in-game.<br>
+<br>
+</p>
+
+<form action="http://newsletters.midsprint.io/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank" class="form-control; border-0">
+  
+
+<div class="d-grid gap-0 col-6 mx-auto">
+<center>
+    <input style="font-size:smaller;" class="form-control; w-75" placeholder="Enter email" type="email" name="member[email]" id="member_email" aria-describedby="emailHelp">
+    </center>
+  </div>
+
+
+  <div class="d-grid gap-0 col-6 mx-auto">
+<center>    
+<button class="btn btn-primary btn-block; w-75" type="submit" name="member[subscribe]" id="member_submit"><span style="font-size:smaller;">Join the Midsprint Newsletter
+</span>
+</button>
+</center>
+  </div>
+  </form>
+
+
+<p id="emailHelp" class="form-text text-muted" style="font-size:10px;" align="center">
+We'll never share or sell your email address. By subscribing, you agree with Revue’s <a target="_blank" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" href="https://www.getrevue.co/privacy">Privacy Policy</a>.
+</p>
 </section>
 <section id="athlete-biomechanics" class="level2">
 <h2 class="anchored" data-anchor-id="athlete-biomechanics"><strong>2 Athlete Biomechanics</strong></h2>
@@ -269,7 +300,7 @@ a(t) = (\frac {v_\max}{\tau}) \cdot e^\frac{-t}{\tau}\\
 </p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="bdb_21_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="bdb_21_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -341,6 +372,21 @@ v^{-1}(\Delta d^{-1} (t)) = [\tau \cdot W(-e^\frac{1 - \Delta d + d_0}{\tau \cdo
 <section id="practical-applications" class="level2">
 <h2 class="anchored" data-anchor-id="practical-applications"><strong>6 Practical Applications</strong></h2>
 <p>The 40-yard dash lasts 5 seconds or less. Much of the current research states that players with higher top speeds have better career success. The research does not explore the correlation between results at the Combine and on-field performance. This paper illustrates that wide receivers,tight ends, and corner acks heavily rely on their rates of acceleration in-game. Moreover, they rarely reach speeds on the field that were reached during the NFL Combine’s 40-yard dash test. Scouts should focus on an athlete’s rate of acceleration, not their top-speed or 40-yard split, when assessing athletic abilities. The formulas presented in this paper, and the accompanying R package midsprint, provides scouts with a novel method of assessing prospects.</p>
+<p><br>
+<br>
+</p>
+<form action="http://newsletters.midsprint.io/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank" class="form-control; border-0">
+  
+  <div class="d-grid gap-0 col-6 mx-auto">
+    <input style="font-size:smaller;" class="form-control" placeholder="Enter email" type="email" name="member[email]" id="member_email" aria-describedby="emailHelp">
+  </div>
+  
+  <div class="d-grid gap-0 col-6 mx-auto">
+    <button class="btn btn-primary btn-block" type="submit" name="member[subscribe]" id="member_submit"><span style="font-size:smaller;">Join the Midsprint Newsletter</span></button>
+  </div>
+  </form>
+
+<p id="emailHelp" class="form-text text-muted" style="font-size:10px;">We'll never share or sell your email address. By subscribing, you agree with Revue’s <a target="_blank" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" href="https://www.getrevue.co/privacy">Privacy Policy</a>.</p>
 
 
 </section>
@@ -535,6 +581,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../disclaimer.html">Disclaimer</a>
+  </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/aaronzpearson">
       <i class="bi bi-twitter" role="img">

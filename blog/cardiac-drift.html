@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
-  "notice_banner_type":"simple",
+  "notice_banner_type":"headline",
   "consent_type":"express",
   "palette":"light",
   "language":"en",
@@ -212,7 +212,12 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/index.html" class="sidebar-item-text sidebar-link">Blog Posts</a>
+  <a href="../blog/index.html" class="sidebar-item-text sidebar-link"><strong>Blog Posts</strong></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/la-threshold.html" class="sidebar-item-text sidebar-link">Identifying the Lactate Threshold</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -291,7 +296,33 @@ cookieconsent.run({
 <section id="tracking-heart-rate" class="level2">
 <h2 class="anchored" data-anchor-id="tracking-heart-rate">Tracking Heart Rate</h2>
 <p>Smart watches provide a somple method to track your heart rate throughout your day. Heart rate can provide feedback on sleep quality, training readiness, and overall recovery rates.</p>
-<p>Endurance athletes also use heart rate to estimate their max aerobic capacity (VO2max) and training intensity levels. During extended training sessions, there is an upward trend in athletes’ heart rate while working at the same intensities. This phenomenon is called <strong>cardiac drift</strong>.</p>
+<p>Endurance athletes also use heart rate to estimate their max aerobic capacity (VO2max) and training intensity levels. During extended training sessions, there is an upward trend in athletes’ heart rate while working at the same intensities. This phenomenon is called <strong>cardiac drift</strong>.<br>
+<br>
+</p>
+
+<form action="http://newsletters.midsprint.io/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank" class="form-control; border-0">
+  
+
+<div class="d-grid gap-0 col-6 mx-auto">
+<center>
+    <input style="font-size:smaller;" class="form-control; w-75" placeholder="Enter email" type="email" name="member[email]" id="member_email" aria-describedby="emailHelp">
+    </center>
+  </div>
+
+
+  <div class="d-grid gap-0 col-6 mx-auto">
+<center>    
+<button class="btn btn-primary btn-block; w-75" type="submit" name="member[subscribe]" id="member_submit"><span style="font-size:smaller;">Join the Midsprint Newsletter
+</span>
+</button>
+</center>
+  </div>
+  </form>
+
+
+<p id="emailHelp" class="form-text text-muted" style="font-size:10px;" align="center">
+We'll never share or sell your email address. By subscribing, you agree with Revue’s <a target="_blank" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" href="https://www.getrevue.co/privacy">Privacy Policy</a>.
+</p>
 <section id="cardiac-drift" class="level3">
 <h3 class="anchored" data-anchor-id="cardiac-drift">Cardiac Drift</h3>
 <p>The upward trend in an athlete’s heart rate is multifactorial. The primary causes are dehydration and accumulation of metabolites.</p>
@@ -360,7 +391,7 @@ cookieconsent.run({
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> hr), <span class="at">colour =</span> <span class="st">"red"</span>) <span class="sc">+</span> </span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Time (s)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Power (W), Heart Rate (bpm)"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cardiac-drift_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="cardiac-drift_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -407,7 +438,7 @@ F-statistic:  1910 on 1 and 3820 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y =</span> hr), <span class="at">colour =</span> <span class="st">"green"</span>, <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> <span class="co"># uses "lm" (linear model) to fit trendline</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Time (s)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Power (W), Heart Rate (bpm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="cardiac-drift_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="cardiac-drift_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -431,6 +462,21 @@ F-statistic:  1910 on 1 and 3820 DF,  p-value: &lt; 2.2e-16</code></pre>
 <section id="application" class="level2">
 <h2 class="anchored" data-anchor-id="application">Application</h2>
 <p>This information can be applied to the critical velocity model. The external expression of an increase in heart rate is the decrease in an athlete’s critical velocity. As such, we should expect to see that the athlete either relies more on anaerobic energy over time to sustain a given pace or that their pace decreases to maximize their use of aerobic energy.</p>
+<p><br>
+<br>
+</p>
+<form action="http://newsletters.midsprint.io/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank" class="form-control; border-0">
+  
+  <div class="d-grid gap-0 col-6 mx-auto">
+    <input style="font-size:smaller;" class="form-control" placeholder="Enter email" type="email" name="member[email]" id="member_email" aria-describedby="emailHelp">
+  </div>
+  
+  <div class="d-grid gap-0 col-6 mx-auto">
+    <button class="btn btn-primary btn-block" type="submit" name="member[subscribe]" id="member_submit"><span style="font-size:smaller;">Join the Midsprint Newsletter</span></button>
+  </div>
+  </form>
+
+<p id="emailHelp" class="form-text text-muted" style="font-size:10px;">We'll never share or sell your email address. By subscribing, you agree with Revue’s <a target="_blank" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" href="https://www.getrevue.co/privacy">Privacy Policy</a>.</p>
 
 
 </section>
@@ -628,6 +674,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../disclaimer.html">Disclaimer</a>
+  </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/aaronzpearson">
       <i class="bi bi-twitter" role="img">
