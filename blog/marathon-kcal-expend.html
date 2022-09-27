@@ -86,6 +86,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
+<link href="../blog/la-threshold.html" rel="next">
+<link href="../blog/index.html" rel="prev">
 <link href="../images/midsprint-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -123,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
-  "notice_banner_type":"headline",
+  "notice_banner_type":"simple",
   "consent_type":"express",
   "palette":"light",
   "language":"en",
@@ -216,6 +218,11 @@ cookieconsent.run({
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../blog/marathon-kcal-expend.html" class="sidebar-item-text sidebar-link active">Caloric Expenditure During a Marathon</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../blog/la-threshold.html" class="sidebar-item-text sidebar-link">Identifying the Lactate Threshold</a>
   </div>
 </li>
@@ -231,6 +238,11 @@ cookieconsent.run({
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../blog/d-prime-balance-presentation.html" class="sidebar-item-text sidebar-link">Modelling D’ Balance Presentation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../blog/cardiac-drift.html" class="sidebar-item-text sidebar-link">Modelling Cardiac Drift</a>
   </div>
 </li>
@@ -242,6 +254,11 @@ cookieconsent.run({
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../blog/bdb_21.html" class="sidebar-item-text sidebar-link">Big Data Bowl 2021 Submission</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/fatigue-detection-presentation.html" class="sidebar-item-text sidebar-link">Fatigue Detection via Tracking Data Presentation</a>
   </div>
 </li>
     </ul>
@@ -268,8 +285,13 @@ cookieconsent.run({
   <li><a href="#calculating-acceleration" id="toc-calculating-acceleration" class="nav-link" data-scroll-target="#calculating-acceleration">Calculating Acceleration</a></li>
   <li><a href="#kcal-from-vo2" id="toc-kcal-from-vo2" class="nav-link" data-scroll-target="#kcal-from-vo2">kCal from VO2</a></li>
   <li><a href="#kcal-from-metabolic-energy" id="toc-kcal-from-metabolic-energy" class="nav-link" data-scroll-target="#kcal-from-metabolic-energy">kCal from Metabolic Energy</a></li>
+  <li><a href="#the-end-result" id="toc-the-end-result" class="nav-link" data-scroll-target="#the-end-result">The End Result</a></li>
   </ul></li>
-  <li><a href="#total-calories-burned" id="toc-total-calories-burned" class="nav-link" data-scroll-target="#total-calories-burned">Total Calories Burned</a></li>
+  <li><a href="#total-calories-burned" id="toc-total-calories-burned" class="nav-link" data-scroll-target="#total-calories-burned">Total Calories Burned</a>
+  <ul class="collapse">
+  <li><a href="#improved-accuracy" id="toc-improved-accuracy" class="nav-link" data-scroll-target="#improved-accuracy">Improved Accuracy</a></li>
+  </ul></li>
+  <li><a href="#caloric-expenditure-visual" id="toc-caloric-expenditure-visual" class="nav-link" data-scroll-target="#caloric-expenditure-visual">Caloric Expenditure Visual</a></li>
   </ul>
 </nav>
     </div>
@@ -297,28 +319,86 @@ cookieconsent.run({
 <div class="cell">
 
 </div>
-<p>In this post, we’ll estimate a marathon runner’s caloric expenditure throughout a marathon. This is achieved using various calculations that are derived directly, indirectly, and arithmetically.</p>
-<p>I’ve discussed kcal expenditure in the past, but felt like it was time to revisit the topic to add greater contect.</p>
+<p>In this post, I work through two methods of estimating caloric expenditure during a marathon.</p>
+<p>The calculations we’ll be using are extensions of Leger and Mercier’s work on VO2max and di Prampero’s work on metabolic energy and power. Specifically, we’ll be transforming the intended outputs to the kCal equivalents.</p>
+<p>Although I’ve discussed caloric expenditure in the past, I feel that revisiting the topic can provide greater context and applicability.<br>
+</p>
+
+<form action="http://newsletters.midsprint.io/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank" class="form-control; border-0">
+  
+
+<div class="d-grid gap-0 col-6 mx-auto">
+<center>
+    <input style="font-size:smaller;" class="form-control; w-75" placeholder="Enter email" type="email" name="member[email]" id="member_email" aria-describedby="emailHelp">
+    </center>
+  </div>
+
+
+  <div class="d-grid gap-0 col-6 mx-auto">
+<center>    
+<button class="btn btn-primary btn-block; w-75" type="submit" name="member[subscribe]" id="member_submit"><span style="font-size:smaller;">Join the Midsprint Newsletter
+</span>
+</button>
+</center>
+  </div>
+  </form>
+
+
+<p id="emailHelp" class="form-text text-muted" style="font-size:10px;" align="center">
+We'll never share or sell your email address. By subscribing, you agree with Revue’s <a target="_blank" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" href="https://www.getrevue.co/privacy">Privacy Policy</a>.
+</p>
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load Libraries</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># for tidy code and plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># for tidy code and plots</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>()) <span class="co"># set ggplot2 theme</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="data-simulation" class="level3">
 <h3 class="anchored" data-anchor-id="data-simulation">Data Simulation</h3>
-<p>We’ll be simulating data for this post. We’ll generate the athlete’s speed using the <code>rnorm()</code> function with <code>mean</code> set to 3.25 m/s and <code>sd</code> to 0.1 to minimize large fluctations in speed over time. We can even use the <code>log()</code> function to simulate the athlete’s start where they ramp up in speed over the course of a few seconds (I also added some noise using the <code>rnorm()</code> function). Finally, we’ll have the runner complete the race in 3.6 hours (12960 seconds).</p>
-<p>The data is set so that the runner’s speed was sampled every second.</p>
+<p>We’ll be simulating data for this post. We’ll generate the athlete’s speed using the <code>rnorm()</code> function with <code>mean</code> set to <code>3.25</code> m/s and <code>sd</code> to <code>0.25</code> m/s to to represent a runner’s consistent speed over time. In this example, we’d expect the runner to complete the marathon in approximately 3.5 to 3.6 hours</p>
+<p>The following code generates the sample data which includes:<br>
+1. The time, sampled every 5 s<br>
+2. The runner’s speed that is normally distributed, in m/s and km/h<br>
+3. The distance the runner has covered, in m and km</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>) <span class="co"># for reproducibility</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>marathon <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">time_s =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12960</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">time_m =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12960</span><span class="sc">/</span><span class="dv">60</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">time_h =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12960</span><span class="sc">/</span><span class="dv">60</span><span class="sc">/</span><span class="dv">60</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">speed_mps =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="co"># starting speed </span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">log</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="fl">0.125</span>, <span class="fl">0.05</span>), <span class="co"># increase from 0 velocity and add some noise</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">rnorm</span>(<span class="dv">12960</span> <span class="sc">-</span> <span class="fu">length</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>), <span class="at">mean =</span> <span class="fl">3.25</span>, <span class="at">sd =</span> <span class="fl">0.1</span>))</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                   )</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>marathon<span class="sc">$</span>speed_hph <span class="ot">&lt;-</span> marathon<span class="sc">$</span>speed_mps <span class="sc">*</span> <span class="fl">3.6</span> <span class="co"># convert speed to kph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>marathon <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">time =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">12960</span>, <span class="at">by =</span> <span class="dv">5</span>),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">speed_mps =</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(time), <span class="at">mean =</span> <span class="fl">3.25</span>, <span class="at">sd =</span> <span class="fl">0.25</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">speed_kph =</span> speed_mps <span class="sc">*</span> <span class="fl">3.6</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                   </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                   <span class="at">dist_m =</span> <span class="fu">cumsum</span>(speed_mps <span class="sc">*</span> <span class="dv">5</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">dist_km =</span> dist_m <span class="sc">*</span> <span class="fl">0.001</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To make my life easier down the road, I also created variables that calculate the differences in time, speed, and distance between observations. I bias the <code>diff()</code> function, but you can also use the <code>lag()</code> function from the <em>Tidyverse</em>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>marathon <span class="ot">&lt;-</span> marathon <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">speed_diff_mps =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">diff</span>(speed_mps)),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">time_diff =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">diff</span>(time)),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dist_diff_m =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">diff</span>(dist_m)),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">dist_diff_km =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">diff</span>(dist_km)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally, to calculate the athlete’s acceleration, I divided the difference in speed by the difference in time, and set the initial acceleration value to zero.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>marathon<span class="sc">$</span>accel <span class="ot">=</span> marathon<span class="sc">$</span>speed_diff_mps<span class="sc">/</span> marathon<span class="sc">$</span>time_diff</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>marathon<span class="sc">$</span>accel[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 10
+   time speed_mps speed…¹ dist_m dist_km speed…² time_…³ dist_…⁴ dist_…⁵   accel
+  &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1     1      3.03    10.9   15.1  0.0151  0            0     0    0       0     
+2     6      3.30    11.9   31.6  0.0316  0.270        5    16.5  0.0165  0.0541
+3    11      3.65    13.1   49.8  0.0498  0.351        5    18.2  0.0182  0.0701
+4    16      2.97    10.7   64.7  0.0647 -0.680        5    14.8  0.0148 -0.136 
+5    21      3.23    11.6   80.8  0.0808  0.263        5    16.1  0.0161  0.0525
+6    26      3.28    11.8   97.2  0.0972  0.0532       5    16.4  0.0164  0.0106
+# … with abbreviated variable names ¹​speed_kph, ²​speed_diff_mps, ³​time_diff,
+#   ⁴​dist_diff_m, ⁵​dist_diff_km</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -327,64 +407,71 @@ cookieconsent.run({
 <p>Since we simulated the data, we already know the data structure. To visualize whether the runner’s speed over time remains consistent, we can plot it using simple graphics from <code>base R</code>.</p>
 <p>We’ll only visualize the first 3 minutes that the athlete ran.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(speed_hph <span class="sc">~</span> time_m, <span class="at">data =</span> marathon[<span class="dv">1</span><span class="sc">:</span><span class="dv">180</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(speed_kph <span class="sc">~</span> time, <span class="at">data =</span> marathon[<span class="dv">1</span><span class="sc">:</span>(<span class="dv">180</span><span class="sc">/</span><span class="dv">5</span>), ],</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Time (s)"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Speed (km/h)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="marathon-kcal-expend_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="marathon-kcal-expend_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 <section id="caloric-expenditure" class="level2">
 <h2 class="anchored" data-anchor-id="caloric-expenditure">Caloric Expenditure</h2>
 <p>We’ll use a few different methods of calculating caloric expenditure. The majority of the calculations originate from research by Leger and Mercier. We’ll also derive caloric expenditure from the metabolic power formula (di Prampero) which is a little trickier.</p>
-<p>To properly assess kcals, we’ll need the runner’s mass. In this case, we’ll set their mass to 70 kg (154 lbs).</p>
 <section id="leger-mercier-kcal" class="level3">
 <h3 class="anchored" data-anchor-id="leger-mercier-kcal">Leger-Mercier kCal</h3>
-<p>Leger and Mercier’s initial work modelled VO2 max utilization (VdotO2 max). We can then convert oxygen intake and output to kcals using the <code>vo2.cal.expend</code> function below.</p>
-<p>The researchers introduced various calculations. Each calculation is based on the athlete’s speed. Since the athlete maintains a consistent pace, we’ll use the formula that was derived based on athletes running around a track.</p>
+<p>Leger and Mercier’s initial work modelled VO2 max utilization (VdotO2 max). We can convert oxygen utilization to kCals using the <code>vo2.cal.expend()</code> function built below.</p>
+<p>The researchers introduced various calculations that encompass the runner’s speed and terrain. Since the athlete maintains a consistent pace, we’ll use the formula that was derived based on athletes running around a track.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>vo2.track <span class="ot">&lt;-</span> <span class="cf">function</span> (speed.kph) </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    vo2 <span class="ot">=</span> <span class="fl">3.5</span> <span class="sc">*</span> speed.kph</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(vo2)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vo2.track <span class="ot">&lt;-</span> <span class="cf">function</span> (speed.kph) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    vo2 <span class="ot">=</span> <span class="fl">3.5</span> <span class="sc">*</span> speed.kph</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(vo2)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is then converted to caloric expenditure:</p>
+<p>This is then converted to caloric expenditure which is capped at 1.05 kcal/km*kg. Setting the upper limit has its roots in previous work on METs and won’t be explored further in this post.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>vo2.cal.expend <span class="ot">&lt;-</span> <span class="cf">function</span>(speed.kph){ <span class="co"># in kcal/km*kg</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  vo2 <span class="ot">=</span> <span class="fu">vo2.track</span>(speed.kph)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  ce <span class="ot">=</span> vo2 <span class="sc">*</span> <span class="dv">5</span> <span class="sc">*</span> <span class="dv">60</span><span class="sc">/</span><span class="dv">1</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>speed.kph</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  ce <span class="ot">=</span> <span class="fu">ifelse</span>(ce <span class="sc">&gt;</span> <span class="fl">1.05</span>, <span class="fl">1.05</span>, ce)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ce)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>vo2.cal.expend <span class="ot">&lt;-</span> <span class="cf">function</span>(speed.kph){ </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  vo2 <span class="ot">=</span> <span class="fu">vo2.track</span>(speed.kph)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  ce <span class="ot">=</span> vo2 <span class="sc">*</span> <span class="dv">5</span> <span class="sc">*</span> <span class="dv">60</span><span class="sc">/</span><span class="dv">1</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000</span> <span class="sc">*</span> <span class="dv">1</span><span class="sc">/</span>speed.kph</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  ce <span class="ot">=</span> <span class="fu">ifelse</span>(ce <span class="sc">&gt;</span> <span class="fl">1.05</span>, <span class="fl">1.05</span>, ce)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ce)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="di-prampero-kcal" class="level3">
 <h3 class="anchored" data-anchor-id="di-prampero-kcal">di Prampero kCal</h3>
-<p>Metabolic power is assessed as <code>met_energy * speed</code> where <code>met.energy = (155.4 * equiv_slope^5 - 30.4 * equiv_slope^4 - 43.3 * equiv_slope^3 + 46.3 * equiv_slope^2 + 19.5 * equiv_slope + 3.6) * 1.29</code> which is returned in joules/kg*m Luckily, kiloJoules are converted to kcal by dividing it by 4184.</p>
-<p>Since metabolic energy is assessed using the athlete’s acceleration, we’ll need to calculate acceleration before returning their final caloric expenditure value.</p>
+<p>Metabolic power is assessed as <code>met.energy * speed</code> where met.energy is:</p>
+<p><span class="math display">\[
+155.4es^5 - 30.4es^4 - 43.3es^3 + 46.3es^2 + 19.5es + 3.6) * 1.29
+\]</span> where <span class="math inline">\(es\)</span> is the runner’s equivalent slope and is returned in joules/kg*m. Luckily, kiloJoules are converted to kCal by dividing it by 4184.</p>
+<p>To calculate metabolic energy, we’ll need:<br>
+1. The runner’s “equivalent slope”<br>
+2. Acceleration between time points which we already calculated</p>
+<p>The runner’s “equivalent slope” represents the angle of the runner’s body as they accelerate or decelerate. The calculations are returned as intermediary calculations,<code>torso</code> and <code>equiv_slope</code>, in the function below. In summary, we utilize horizontal and vertical acceleration to find the runner’s torso angle. This returns values while accelerating (positive angle) and decelerating (negative angle).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>met.energy <span class="ot">&lt;-</span> <span class="cf">function</span> (accel) {</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    torso <span class="ot">&lt;-</span> <span class="fu">atan</span>(<span class="fl">9.81</span><span class="sc">/</span>accel)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    equiv_slope <span class="ot">&lt;-</span> <span class="fu">tan</span>(pi<span class="sc">/</span><span class="dv">2</span> <span class="sc">-</span> torso)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    met_energy <span class="ot">=</span> (<span class="fl">155.4</span> <span class="sc">*</span> equiv_slope<span class="sc">^</span><span class="dv">5</span> <span class="sc">-</span> <span class="fl">30.4</span> <span class="sc">*</span> equiv_slope<span class="sc">^</span><span class="dv">4</span> <span class="sc">-</span> </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="fl">43.3</span> <span class="sc">*</span> equiv_slope<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="fl">46.3</span> <span class="sc">*</span> equiv_slope<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">19.5</span> <span class="sc">*</span> </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        equiv_slope <span class="sc">+</span> <span class="fl">3.6</span>) <span class="sc">*</span> <span class="fl">1.29</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(met_energy)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>met.cal.expend <span class="ot">&lt;-</span> <span class="cf">function</span>(met.energy) { </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  ce <span class="ot">=</span> met.energy<span class="sc">/</span><span class="dv">4184</span> <span class="co"># j to kcal</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>met.energy <span class="ot">&lt;-</span> <span class="cf">function</span> (accel) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    torso <span class="ot">&lt;-</span> <span class="fu">atan</span>(<span class="fl">9.81</span><span class="sc">/</span>accel)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    equiv_slope <span class="ot">&lt;-</span> <span class="fu">tan</span>(pi<span class="sc">/</span><span class="dv">2</span> <span class="sc">-</span> torso)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    met_energy <span class="ot">=</span> (<span class="fl">155.4</span> <span class="sc">*</span> equiv_slope<span class="sc">^</span><span class="dv">5</span> <span class="sc">-</span> <span class="fl">30.4</span> <span class="sc">*</span> equiv_slope<span class="sc">^</span><span class="dv">4</span> <span class="sc">-</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="fl">43.3</span> <span class="sc">*</span> equiv_slope<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="fl">46.3</span> <span class="sc">*</span> equiv_slope<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">19.5</span> <span class="sc">*</span> </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        equiv_slope <span class="sc">+</span> <span class="fl">3.6</span>) <span class="sc">*</span> <span class="fl">1.29</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(met_energy)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>met.cal.expend <span class="ot">&lt;-</span> <span class="cf">function</span>(met.energy) { </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  ce <span class="ot">=</span> met.energy<span class="sc">/</span><span class="dv">4184</span> <span class="co"># j to kcal</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -392,40 +479,58 @@ cookieconsent.run({
 <h2 class="anchored" data-anchor-id="caloric-expenditure-1">Caloric Expenditure</h2>
 <section id="calculating-acceleration" class="level3">
 <h3 class="anchored" data-anchor-id="calculating-acceleration">Calculating Acceleration</h3>
-<p>VO2max utilization is returned in mL/kg*m. To calculate total caloric expenditure, we’ll need to add a <code>distance</code> variable to the data set in meters. Since time is in seconds, we’ll multiple speed by 1 to return the total distance covered in that second. <code>distance</code> should, in this case, match the athlete’s speed in m/s.</p>
-<p>Metabolic power takes on acceleration in m/s/s. To calculate acceleration, we need to take the difference in speed at times <span class="math inline">\(i\)</span> and <span class="math inline">\(i - 1\)</span> and divide by the difference in time. Since time is in seconds, we can calculate acceleration in m/s/s.</p>
+<p>To assess caloric expenditure as it relates to the runner, we need the athlete’s mass. For this example, we’ll set the runner’s body mass to <code>70</code> kg.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>body.mass <span class="ot">&lt;-</span> <span class="dv">70</span> <span class="co"># in kg</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>marathon<span class="sc">$</span>distance_m <span class="ot">&lt;-</span> marathon<span class="sc">$</span>speed_mps <span class="sc">*</span> <span class="dv">1</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>marathon<span class="sc">$</span>accel <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">diff</span>(marathon<span class="sc">$</span>speed_mps))<span class="sc">/</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>body.mass <span class="ot">&lt;-</span> <span class="dv">70</span> <span class="co"># in kg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="kcal-from-vo2" class="level3">
 <h3 class="anchored" data-anchor-id="kcal-from-vo2">kCal from VO2</h3>
-<p>Instantaneous caloric expenditure (normalized) vector:</p>
+<p><strong>Calculate Normalized Expenditure</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cals.vo2 <span class="ot">&lt;-</span> <span class="fu">vo2.cal.expend</span>(marathon<span class="sc">$</span>speed_hph)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>marathon<span class="sc">$</span>cals.vo2 <span class="ot">&lt;-</span> cals.vo2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cals.vo2 <span class="ot">&lt;-</span> <span class="fu">vo2.cal.expend</span>(marathon<span class="sc">$</span>speed_kph)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>marathon<span class="sc">$</span>cals.vo2 <span class="ot">&lt;-</span> cals.vo2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Instantaneous kCals (non-normalized) based on the athlete’s body mass and distance covered, and cumulative kCals are assessed below:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># marathon &lt;- marathon %&gt;% </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(cals.vo2.inst = cals.vo2 * distance_km * body.mass,</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#          total.cal.vo2 = cumsum(cals.vo2.inst))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>marathon <span class="ot">&lt;-</span> marathon <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cals.vo2.inst =</span> cals.vo2 <span class="sc">*</span> dist_diff_km <span class="sc">*</span> body.mass,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">total.cal.vo2 =</span> <span class="fu">cumsum</span>(cals.vo2.inst))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="kcal-from-metabolic-energy" class="level3">
 <h3 class="anchored" data-anchor-id="kcal-from-metabolic-energy">kCal from Metabolic Energy</h3>
-<p>Since we’ve already calculted acceleration, all we need to do now is repeat the steps above using the <code>met.energy</code> and <code>met.energy.expend</code> functions.</p>
+<p>Since we’ve already calculated acceleration, all we need to do now is repeat the steps above using the <code>met.energy</code> and <code>met.energy.expend</code> functions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cals.met.energy &lt;- met.cal.expend(marathon$accel)</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># marathon$met.energy &lt;- cals.met.energy</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># marathon &lt;- marathon %&gt;% </span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   mutate(cals.met.energy.inst = met.energy * body.mass * distance_m,</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#          total.cal.met.energy = cumsum(cals.met.energy.inst, na.rm = TRUE))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>marathon <span class="ot">&lt;-</span> marathon <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">met.energy =</span> <span class="fu">met.energy</span>(marathon<span class="sc">$</span>accel),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">cals.met.energy =</span> <span class="fu">met.cal.expend</span>(met.energy))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>marathon <span class="ot">&lt;-</span> marathon <span class="sc">%&gt;%</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cals.met.energy.inst =</span> cals.met.energy <span class="sc">*</span> dist_diff_m <span class="sc">*</span> body.mass,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">total.cal.met.energy =</span> <span class="fu">cumsum</span>(cals.met.energy.inst))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-end-result" class="level3">
+<h3 class="anchored" data-anchor-id="the-end-result">The End Result</h3>
+<p>At this point, we’ve built a large data set. Since we are interested in the total caloric expenditure, we’ll call <code>tail()</code> to look at the runner’s final 30 s. Hopefully, everything looks good and makes sense!</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 17
+   time speed…¹ speed…² dist_m dist_km speed_…³ time_…⁴ dist_…⁵ dist_…⁶    accel
+  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+1 12931    3.33    12.0 42224.    42.2 -0.172         5    16.7  0.0167 -0.0344 
+2 12936    3.33    12.0 42241.    42.2 -0.00506       5    16.6  0.0166 -0.00101
+3 12941    3.11    11.2 42257.    42.3 -0.212         5    15.6  0.0156 -0.0424 
+4 12946    3.24    11.7 42273.    42.3  0.131         5    16.2  0.0162  0.0262 
+5 12951    3.65    13.2 42291.    42.3  0.410         5    18.3  0.0183  0.0821 
+6 12956    3.05    11.0 42306.    42.3 -0.607         5    15.2  0.0152 -0.121  
+# … with 7 more variables: cals.vo2 &lt;dbl&gt;, cals.vo2.inst &lt;dbl&gt;,
+#   total.cal.vo2 &lt;dbl&gt;, met.energy &lt;dbl&gt;, cals.met.energy &lt;dbl&gt;,
+#   cals.met.energy.inst &lt;dbl&gt;, total.cal.met.energy &lt;dbl&gt;, and abbreviated
+#   variable names ¹​speed_mps, ²​speed_kph, ³​speed_diff_mps, ⁴​time_diff,
+#   ⁵​dist_diff_m, ⁶​dist_diff_km</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -433,12 +538,71 @@ cookieconsent.run({
 <h2 class="anchored" data-anchor-id="total-calories-burned">Total Calories Burned</h2>
 <p>Finally, we can pull the athlete’s total caloric expenditure by using the <code>max()</code> function. By summing the athlete’s total kCal output, the final value is their total expenditure.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print("kCal from VO2: ", max(marathon$total.cal.vo2, na.rm = TRUE),</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       "\nkCal from metabolic energy: ", max(marathon$total.cal.met.energy))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Total Caloric Estimates:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">VO2: "</span>, <span class="fu">round</span>(<span class="fu">max</span>(marathon<span class="sc">$</span>total.cal.vo2), <span class="dv">0</span>),</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="sc">\n</span><span class="st">Metabolic Energy: "</span>, <span class="fu">round</span>(<span class="fu">max</span>(marathon<span class="sc">$</span>total.cal.met.energy), <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total Caloric Estimates: 
+VO2:  3108 
+Metabolic Energy:  3295</code></pre>
 </div>
+</div>
+<p>The difference between estimates is 187. Although it may seem substantially different, it is negligible when compared to the overall estimate.</p>
+<p>From a quick Google search, it looks like caloric expenditure typically ranges from 2500 to 3500 calories depending on the individual’s mass and speed. Since our runner is heavier than the typical runner, we should expect that they reside closer to the 3500 calorie mark.</p>
+<section id="improved-accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="improved-accuracy">Improved Accuracy</h3>
+<p>Since a marathon is 42.195 km, we can remove any distance exceeding the marathon’s start to finish. The end result is trivial:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(marathon$total.cal.met.energy)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>marathon <span class="ot">&lt;-</span> marathon <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(dist_km <span class="sc">&lt;=</span> <span class="fl">42.2</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Total Caloric Estimates:"</span>, <span class="st">"</span><span class="sc">\n</span><span class="st">VO2: "</span>, <span class="fu">round</span>(<span class="fu">max</span>(marathon<span class="sc">$</span>total.cal.vo2), <span class="dv">0</span>),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="sc">\n</span><span class="st">Metabolic Energy: "</span>, <span class="fu">round</span>(<span class="fu">max</span>(marathon<span class="sc">$</span>total.cal.met.energy), <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total Caloric Estimates: 
+VO2:  3100 
+Metabolic Energy:  3286</code></pre>
 </div>
+</div>
+</section>
+</section>
+<section id="caloric-expenditure-visual" class="level2">
+<h2 class="anchored" data-anchor-id="caloric-expenditure-visual">Caloric Expenditure Visual</h2>
+<p>Finally, the plot below provides a visual of our caloric expenditure estimate. It is very clear that the <code>metabolic energy</code> method is consistently greater than the <code>VO2max</code> method. Unfortunately, there is no way in knowing which estimate is more accurate.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(marathon, <span class="fu">aes</span>(<span class="at">x =</span> time)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> cals.vo2.inst), <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> cals.met.energy.inst), <span class="at">colour =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Caloric Expenditure"</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Time"</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Caloric Expenditure (kcal)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="marathon-kcal-expend_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><br>
+<br>
+</p>
+<form action="http://newsletters.midsprint.io/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank" class="form-control; border-0">
+  
+  <div class="d-grid gap-0 col-6 mx-auto">
+    <input style="font-size:smaller;" class="form-control" placeholder="Enter email" type="email" name="member[email]" id="member_email" aria-describedby="emailHelp">
+  </div>
+  
+  <div class="d-grid gap-0 col-6 mx-auto">
+    <button class="btn btn-primary btn-block" type="submit" name="member[subscribe]" id="member_submit"><span style="font-size:smaller;">Join the Midsprint Newsletter</span></button>
+  </div>
+  </form>
+
+<p id="emailHelp" class="form-text text-muted" style="font-size:10px;">We'll never share or sell your email address. By subscribing, you agree with Revue’s <a target="_blank" href="https://www.getrevue.co/terms">Terms of Service</a> and <a target="_blank" href="https://www.getrevue.co/privacy">Privacy Policy</a>.</p>
 
 
 </section>
@@ -617,6 +781,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../blog/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><strong>Blog Posts</strong></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../blog/la-threshold.html" class="pagination-link">
+        <span class="nav-page-text">Identifying the Lactate Threshold</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
