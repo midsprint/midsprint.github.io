@@ -23,7 +23,7 @@ ul.task-list{list-style: none;}
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
-<link href="../blog/fvp_split-apply-combine.html" rel="next">
+<link href="../blog/asym-vs-performance.html" rel="next">
 <link href="../images/midsprint-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -57,15 +57,24 @@ ul.task-list{list-style: none;}
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QGHEY0VBEL"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QGHEY0VBEL', { 'anonymize_ip': true});
+</script>
 
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
-  "consent_type":"express",
+  "consent_type":"implied",
   "palette":"light",
   "language":"en",
-  "page_load_consent_levels":["strictly-necessary"],
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
@@ -148,32 +157,42 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/index.html" class="sidebar-item-text sidebar-link active">Blog Posts</a>
+  <a href="../blog/index.html" class="sidebar-item-text sidebar-link active"><strong>Blog Posts</strong></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/fvp_split-apply-combine.html" class="sidebar-item-text sidebar-link">Profiling Multiple Athletes with fvp</a>
+  <a href="../blog/asym-vs-performance.html" class="sidebar-item-text sidebar-link">Replicating Asymmetries vs Performance</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/bdb_22.html" class="sidebar-item-text sidebar-link">Big Data Bowl 2022 Submission</a>
+  <a href="../blog/critical-speed.html" class="sidebar-item-text sidebar-link">Review: Critical Velocity</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/cardiac-drift.html" class="sidebar-item-text sidebar-link">Modelling Cardiac Drift</a>
+  <a href="../blog/fvp-split-apply-combine.html" class="sidebar-item-text sidebar-link">Profiling Multiple Athletes with fvp</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/clean-catapult-data.html" class="sidebar-item-text sidebar-link">Cleaning Catapult Data</a>
+  <a href="../blog/bdb-22.html" class="sidebar-item-text sidebar-link">Big Data Bowl 2022 Submission</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/bdb_21.html" class="sidebar-item-text sidebar-link">Big Data Bowl 2021 Submission</a>
+  <a href="../blog/d-prime-balance-presentation.html" class="sidebar-item-text sidebar-link">Modelling D’ Balance Presentation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/bdb-21.html" class="sidebar-item-text sidebar-link">Big Data Bowl 2021 Submission</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/fatigue-detection-presentation.html" class="sidebar-item-text sidebar-link">Fatigue Detection via Tracking Data Presentation</a>
   </div>
 </li>
     </ul>
@@ -204,16 +223,33 @@ cookieconsent.run({
 
 </header>
 
-<p><a href="../blog/fvp_split-apply-combine.html"><strong>Profiling Multiple Athletes with fvp</strong></a><br>
+<!-- [**Estimating Caloric Expenditure During a Marathon**](marathon-kcal-expend.qmd)\ -->
+<!-- Using fabricated data, we can estimate caloric expenditure of a marathon runner. Estimates are derived from estimates of the runner's oxygen utilization and their metabolic energy.  -->
+<!-- \ -->
+<!-- \ -->
+<!-- [**Identifying the Lactate Threshold Using Splines**](la-threshold.qmd)\ -->
+<!-- Using publicly available lactate threshold testing data, we are able to use different machine learning techniques to identify an athlete's lactate threshold and critical power.  -->
+<p><a href="../blog/critical-speed.html"><strong>Review: Critical Velocity</strong></a><br>
+A brief review of critical velocity the code needed to model it.</p>
+<p><a href="../blog/asym-vs-performance.html"><strong>Replicating Inter-Limb Asymmetries are Associated with Decrements in Physical Performance in Youth Elite Team Sports Athletes</strong></a><br>
+Replicating the results from <em>Inter-limb asymmetries are associated with decrements in physical performance in youth elite team sports athletes</em> with the data set that was made publicly available.</p>
+<p><a href="../blog/fvp-split-apply-combine.html"><strong>Profiling Multiple Athletes with fvp</strong></a><br>
 Modelling multiple force-velocity-power profiles simultaneously using the <em>fvp</em> package.</p>
-<p><a href="../blog/bdb_22.html"><strong>BDB 2022: The Punt Returner Shouldn’t Return Punts</strong></a><br>
+<p><a href="../blog/bdb-22.html"><strong>BDB 2022: The Punt Returner Shouldn’t Return Punts</strong></a><br>
 Big Data Bowl 2022 submission that tried to display that the punt returner should immediately lateral the ball to improve punt return yardage.</p>
-<p><a href="../blog/cardiac-drift.html"><strong>Modelling Cardiac Drift</strong></a><br>
-Try to predict the increase of an athlete’s heart rate over time during maintained aerobic conditioning.</p>
-<p><a href="../blog/clean-catapult-data.html"><strong>Cleaning Catapult Data</strong></a><br>
-Catapult data usually has meta-data at the top of the .csv file. This blog show you how to efficiently reading and cleaning Catapult data into R. A custom function is also provided at the bottom of the blog for easy replication.</p>
-<p><a href="../blog/bdb_21.html"><strong>BDB 2021: 5 Seconds or Less</strong></a><br>
+<p><a href="../blog/d-prime-balance-presentation.html"><strong>Modelling Anaerobic Energy Balance</strong></a><br>
+Abstract presentation on modelling collegiate soccer and professional ice-hockey players’ anaerobic energy balance. Presentation was approximately 5 minutes.</p>
+<!-- [**Modelling Cardiac Drift**](cardiac-drift.qmd)\ -->
+<!-- Try to predict the increase of an athlete's heart rate over time during maintained aerobic conditioning. -->
+<!-- [**Cleaning Catapult Data**](clean-catapult-data.qmd)\ -->
+<!-- Catapult data usually has meta-data at the top of the .csv file. This blog show you how to efficiently reading and cleaning Catapult data into R. A custom function is also provided at the bottom of the blog for easy replication. -->
+<p><a href="../blog/bdb-21.html"><strong>BDB 2021: 5 Seconds or Less</strong></a><br>
 Big Data Bowl 2021 submission that modelled athletes’ sprint abilities to predict passing outcomes. This submission earned an honourable mention.</p>
+<p><a href="../blog/fatigue-detection-presentation.html"><strong>Identifying Fatigue without Biometric Data</strong></a><br>
+Presentation on sources of fatigue and how they can be detected using player tracking data. Topics include energy systems, sources of fatigue, physiological modelling, and potential applications in sports.</p>
+<p><br>
+<br>
+</p>
 
 
 
@@ -395,8 +431,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../blog/fvp_split-apply-combine.html" class="pagination-link">
-        <span class="nav-page-text">Profiling Multiple Athletes with fvp</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../blog/asym-vs-performance.html" class="pagination-link">
+        <span class="nav-page-text">Replicating Asymmetries vs Performance</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -407,6 +443,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../disclaimer.html">Disclaimer</a>
+  </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/aaronzpearson">
       <i class="bi bi-twitter" role="img">

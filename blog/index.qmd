@@ -2,17 +2,44 @@
 title: "Blog Posts"
 ---
 
-[**Profiling Multiple Athletes with fvp**](fvp_split-apply-combine.qmd)\
+<!-- [**Estimating Caloric Expenditure During a Marathon**](marathon-kcal-expend.qmd)\ -->
+<!-- Using fabricated data, we can estimate caloric expenditure of a marathon runner. Estimates are derived from estimates of the runner's oxygen utilization and their metabolic energy.  -->
+<!-- \ -->
+<!-- \ -->
+
+<!-- [**Identifying the Lactate Threshold Using Splines**](la-threshold.qmd)\ -->
+<!-- Using publicly available lactate threshold testing data, we are able to use different machine learning techniques to identify an athlete's lactate threshold and critical power.  -->
+
+### Note
+Some blog posts are undergoing large updates to improve the quality of writing, clarity, and code. 
+
+[**Review: Critical Velocity**](critical-speed.qmd)\
+A brief review of critical velocity the code needed to model it. 
+
+[**Replicating Inter-Limb Asymmetries are Associated with Decrements in Physical Performance in Youth Elite Team Sports Athletes**](asym-vs-performance.qmd)\
+Replicating the results from *Inter-limb asymmetries are associated with decrements in physical performance in youth elite team sports athletes* with the data set 
+that was made publicly available.
+
+[**Profiling Multiple Athletes with fvp**](fvp-split-apply-combine.qmd)\
 Modelling multiple force-velocity-power profiles simultaneously using the *fvp* package.
 
-[**BDB 2022: The Punt Returner Shouldn't Return Punts**](bdb_22.qmd)\
+[**BDB 2022: The Punt Returner Shouldn't Return Punts**](bdb-22.qmd)\
 Big Data Bowl 2022 submission that tried to display that the punt returner should immediately lateral the ball to improve punt return yardage. 
 
-[**Modelling Cardiac Drift**](cardiac-drift.qmd)\
-Try to predict the increase of an athlete's heart rate over time during maintained aerobic conditioning.
+[**Modelling Anaerobic Energy Balance**](d-prime-balance-presentation.qmd)\
+Abstract presentation on modelling collegiate soccer and professional ice-hockey players' anaerobic energy balance. Presentation was approximately 5 minutes. 
 
-[**Cleaning Catapult Data**](clean-catapult-data.qmd)\
-Catapult data usually has meta-data at the top of the .csv file. This blog show you how to efficiently reading and cleaning Catapult data into R. A custom function is also provided at the bottom of the blog for easy replication.
+<!-- [**Modelling Cardiac Drift**](cardiac-drift.qmd)\ -->
+<!-- Try to predict the increase of an athlete's heart rate over time during maintained aerobic conditioning. -->
 
-[**BDB 2021: 5 Seconds or Less**](bdb_21.qmd)\
+<!-- [**Cleaning Catapult Data**](clean-catapult-data.qmd)\ -->
+<!-- Catapult data usually has meta-data at the top of the .csv file. This blog show you how to efficiently reading and cleaning Catapult data into R. A custom function is also provided at the bottom of the blog for easy replication. -->
+
+[**BDB 2021: 5 Seconds or Less**](bdb-21.qmd)\
 Big Data Bowl 2021 submission that modelled athletes' sprint abilities to predict passing outcomes. This submission earned an honourable mention.
+
+[**Identifying Fatigue without Biometric Data**](fatigue-detection-presentation.qmd)\
+Presentation on sources of fatigue and how they can be detected using player tracking data. Topics include energy systems, sources of fatigue, physiological modelling, and potential applications in sports. 
+
+\
+\

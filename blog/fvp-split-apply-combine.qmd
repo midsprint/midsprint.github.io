@@ -1,0 +1,150 @@
+---
+title: "Profiling Multiple Athletes with fvp"
+---
+
+A while ago, I was asked how to use *fvp* to profile multiple athletes at once. 
+
+At the time, I had trouble working it out. Luckily, a current project required a similar task and I figured that I would try my hand at profiling multiple athletes using the *fvp* package again.
+
+An oversight of mine is that the fvp package isn't setup to work well with the tidyverse (this might change with future updates). Therefore, we can't rely on the `group_by()`, `nest()` and `map()` combination to apply functions to multiple players at once. Instead, we can rely on base R's equivalent of `split-apply-combine` which, in this case, will rely on the `split()`, `lapply()`, and `rbind()` functions. 
+
+For this blog post, we'll look at two scenarios: 1. creating a `data.frame` per athlete that can then be called upon for further analyses, and 2. reporting summarized data as a single `data.frame`.
+\
+\
+
+
+## Install and Load Packages
+
+Install the *fvp* package if needed:
+
+```{r install}
+#| eval: false
+devtools::install_github("aaronzpearson/fvp")
+```
+
+**Load the packages**
+
+```{r load, message=FALSE, warning=FALSE}
+#| message: false
+library(fvp) # for player profiling
+library(tidyverse) # for initial data cleaning
+library(data.table) # for efficient lodaing of the data
+```
+
+## Load Data
+
+We'll use some of the NFL's *Big Data Bowl* positional tracking data for the examples. We'll import the data directly from GitHub by identifying the *raw* formatted data. Since I've worked with the data before, I know that there are only a handful of variables that we need or should have in the data set. The variables I selected are: x & y coordinates, speed (s), player IDs (nflId), and play IDs (playId. 
+
+Please note that this file is large and can take a minute or two to load.
+
+```{r data}
+url <- "https://github.com/nfl-football-ops/Big-Data-Bowl/blob/master/Data/tracking_gameId_2017090700.csv?raw=true"
+nfl <- data.table::fread(url) %>% 
+  select(x, y, s, nflId, playId)
+
+head(nfl)
+```
+
+Since this data set doesn't contain an acceleration (a) variable, we'll need to add it in using `mutate()`. The data is at 10Hz, so we'll take the difference of the players' speed between time points and divide by 1/10. Also, I set it up so that acceleration is calculated per player, per play. This way, acceleration is not calculated as a continuous vector, rolling from player to player and play to play.
+
+```{r}
+nfl.clean = nfl %>% 
+  group_by(nflId, playId) %>% 
+  mutate(a = c(0, diff(s))/.1)
+
+head(nfl.clean)
+```
+
+
+## Select Player
+
+For our examples, we'll select the two players with the most playing time.
+
+```{r player-select}
+players <- nfl.clean %>%
+  group_by(nflId) %>% 
+  count(sort = TRUE) 
+
+top.players <- players$nflId[2:3] # players$nflId[1] is NA; represents the football
+
+top.nfl <- nfl.clean %>% 
+  filter(nflId %in% top.players)
+
+head(top.nfl)
+```
+
+
+## Split the Data Set per Player
+
+The first step is to `split()` the data per player by their nflId. This is iterated over all players automatically. We'll be left with a *list* of `data.frame`s, so calling `head()` won't work. Instead, we need to use the `apply()` family of functions to iterate a function over each element of the list.
+
+
+```{r player-split}
+player.df <- split(top.nfl, top.nfl$nflId)
+
+lapply(player.df, head)
+```
+
+## Best Sprints Data Sets
+
+For this example, we'll build a data set per player that returns their best on-field sprint. To do so, we'll need the `gps` family of functions from fvp. Specifically, we'll call the `gps.best.sprint()` function to return the player's best *observed*, or actual, on-field sprint. 
+
+The `gps.best.sprint()` function takes on a few arguments: the game's speed vector, the minimum starting speed for the sprint, and the percent of the player's max speed that they must attain for us to consider the max effort sprint be achieved. Since player's are often bumped at the beginning of each play, I set the minimum speed to 1 yd/s. I also set the percent of max speed to 95%. From experience, setting the percentage greater than 95% returns odd results because players don't often reach their top speed more than 1-2 times per game.
+
+One of the toughest parts of using `lapply()` is understanding the syntax. The first argument is the list onto which we want to apply a function. They second argument is the function we want to aply. That said, the function can either be pre-existing like in the example above. Otherwise, we can build a new function to incorporate different arguments. 
+
+Below, we must set the `gps.best.sprint()` function within another function. This way, we can consider `x` as the element of the list we want to apply the function. For this example, `x` represents the athletes' `data.frame`s. 
+
+```{r}
+sprints <- lapply(player.df, 
+                  function(x) gps.best.sprint(game.speed =  x$s, 
+                                              min.speed = 1, 
+                                              max.speed.threshold = 95)
+)
+
+lapply(sprints, head)
+```
+
+We can then plot the sprints by either combining the data sets and adding-in the player's names, or by calling upon their position in the list of `data.frame`s. Here, I went with the latter.
+
+```{r}
+theme_set(theme_minimal())
+
+ggplot(sprints[[1]], aes(x = split.time, y = observed.speed)) +
+  geom_point() +
+  geom_point(data = sprints[[2]], colour = "red") +
+  ylab("Observed Speed (yards/ s)") +
+  xlab("Split Time (s)")
+```
+
+
+## Player Profile Data Set
+
+If we wanted to have a single data set that has all of the player's summarized data, we can use a similar approach to the one above. The final step is to then re-combine the data so it is all in a single data frame using `rbind()`.
+
+We'll use the same data split sets from above.
+
+In this code chunk, we:    
+* apply the speed-accel player profiling function (`sa.player.profile`) to each element of the list  
+* use `do.call()` which also applies a function to each of the elements of the list    
+
+We need to use `do.call()` because it applies a function that isn't typically allowed with lists. In this case, we built player profiles and used `do.call()` and `rbind()` to bind them back into a single data frame.
+
+If we called `rbind()` directly, we'll be returned an error.
+
+
+```{r}
+speed.accel.profiles <- do.call(rbind,
+                           lapply(player.df, 
+                          function(x) sa.player.profile(player.name = unique(x$nflId), 
+                                                        game.data = sa.data(x$s, x$a)))
+)
+
+speed.accel.profiles
+```
+
+Using the speed-accel function on the players' data sets, we are returned their summarized data. The speed-accel profiles look similar with player `2550257` slightly faster and player `2543699` slightly more accerlation dominant.
+
+\
+\
+

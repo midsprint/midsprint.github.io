@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.260">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Midsprint - Big Data Bowl 2021 Submission</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<link href="../blog/fatigue-detection-presentation.html" rel="next">
+<link href="../blog/d-prime-balance-presentation.html" rel="prev">
+<link href="../images/midsprint-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link class="quarto-color-scheme" id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link class="quarto-color-scheme" href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link class="quarto-color-scheme quarto-color-alternate" rel="prefetch" href="../site_libs/bootstrap/bootstrap-dark.min.css">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QGHEY0VBEL"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QGHEY0VBEL', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Midsprint - Big Data Bowl 2021 Submission">
+<meta property="og:site-name" content="Midsprint">
+<meta name="twitter:title" content="Midsprint - Big Data Bowl 2021 Submission">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <img src="../images/midsprint-logo-white.png" alt="">
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../#about">About</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../#services">Services</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../#contact">Contact</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../blog/index.html" aria-current="page">Blog</a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/aaronzpearson"><i class="bi bi-twitter" role="img" aria-label="Twitter">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aaronzpearson"><i class="bi bi-github" role="img" aria-label="Github">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Big Data Bowl 2021 Submission</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/index.html" class="sidebar-item-text sidebar-link"><strong>Blog Posts</strong></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/asym-vs-performance.html" class="sidebar-item-text sidebar-link">Replicating Asymmetries vs Performance</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/critical-speed.html" class="sidebar-item-text sidebar-link">Review: Critical Velocity</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/fvp-split-apply-combine.html" class="sidebar-item-text sidebar-link">Profiling Multiple Athletes with fvp</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/bdb-22.html" class="sidebar-item-text sidebar-link">Big Data Bowl 2022 Submission</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/d-prime-balance-presentation.html" class="sidebar-item-text sidebar-link">Modelling D’ Balance Presentation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/bdb-21.html" class="sidebar-item-text sidebar-link active">Big Data Bowl 2021 Submission</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../blog/fatigue-detection-presentation.html" class="sidebar-item-text sidebar-link">Fatigue Detection via Tracking Data Presentation</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes" id="toc-seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes" class="nav-link active" data-scroll-target="#seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes">5 Seconds or Less: Modeling player biomechanics to predict pass outcomes</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><strong>1 Introduction</strong></a></li>
+  <li><a href="#athlete-biomechanics" id="toc-athlete-biomechanics" class="nav-link" data-scroll-target="#athlete-biomechanics"><strong>2 Athlete Biomechanics</strong></a>
+  <ul class="collapse">
+  <li><a href="#sprint-kinetics" id="toc-sprint-kinetics" class="nav-link" data-scroll-target="#sprint-kinetics"><strong>2.1 Sprint Kinetics</strong></a></li>
+  <li><a href="#modernizing-old-models" id="toc-modernizing-old-models" class="nav-link" data-scroll-target="#modernizing-old-models"><strong>2.2 Modernizing Old Models</strong></a></li>
+  <li><a href="#midsprint" id="toc-midsprint" class="nav-link" data-scroll-target="#midsprint"><strong>2.3 Midsprint</strong></a></li>
+  </ul></li>
+  <li><a href="#predicting-pass-outcomes" id="toc-predicting-pass-outcomes" class="nav-link" data-scroll-target="#predicting-pass-outcomes"><strong>3 Predicting Pass Outcomes</strong></a>
+  <ul class="collapse">
+  <li><a href="#nearest-defender" id="toc-nearest-defender" class="nav-link" data-scroll-target="#nearest-defender"><strong>3.1 Nearest Defender</strong></a></li>
+  <li><a href="#calculating-outcomes" id="toc-calculating-outcomes" class="nav-link" data-scroll-target="#calculating-outcomes"><strong>3.2 Calculating Outcomes</strong></a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><strong>4 Results</strong></a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><strong>5 Discussion</strong></a>
+  <ul class="collapse">
+  <li><a href="#positional-f-v-p-profiles" id="toc-positional-f-v-p-profiles" class="nav-link" data-scroll-target="#positional-f-v-p-profiles"><strong>5.1 Positional F-V-P Profiles</strong></a></li>
+  <li><a href="#tuning-the-model" id="toc-tuning-the-model" class="nav-link" data-scroll-target="#tuning-the-model"><strong>5.2 Tuning the Model</strong></a></li>
+  </ul></li>
+  <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications"><strong>6 Practical Applications</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Big Data Bowl 2021 Submission</h1>
+</div>
+
+
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="seconds-or-less-modeling-player-biomechanics-to-predict-pass-outcomes">5 Seconds or Less: Modeling player biomechanics to predict pass outcomes</h2>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction"><strong>1 Introduction</strong></h2>
+<p>The 40-yard dash is one of the most exciting events tested at the NFL Combine. Prospects set-up in a three-point stance and, after a brief pause, start of their own volition. Time begins when the hand is released from the ground and stops when the player breaks the plane at 40 yards. Sprint times are typically five seconds or less.</p>
+<p>In those five seconds, players display their ability to produce force and power. Within position groups, the fastest players are drafted earlier and have more career success. Unfortunately, much of the data surrounding their career success and abilities are descriptive in nature. Research has also shown that the fastest 40-yard splits are run by players with the greatest top-speeds. Yet there is very little evidence that the 40-yard dash translates to an athlete’s on-field mechanical sprint abilities.</p>
+<p>Players rarely reach their top-speed during games. Passing plays that last 4 to 6 seconds challenge receivers to create space between themselves and the defender. It is their ability to juke, deke, cut, and feint that creates this space. Conversely, defenders attempt to remain in proximity of the receiver by mirroring these changes in speed and direction. These factors affect a player’s ability to reach their top-speed.</p>
+<p>This paper explores the relationship between an athlete’s sprint kinetics and pass completion rates. Specifically, it aims to explore whether modeling an athlete’s mechanical sprint profile to cover a given distance can influence pass outcomes. Background information on modeling an athlete’s mechanical sprint abilities is provided as a framework for new methodologies that can be applied in-game.<br>
+<br>
+</p>
+</section>
+<section id="athlete-biomechanics" class="level2">
+<h2 class="anchored" data-anchor-id="athlete-biomechanics"><strong>2 Athlete Biomechanics</strong></h2>
+<p>Furusawa and colleagues (1927) first modeled sprint kinetics and kinematics by analyzing a sprinter’s center of mass while running. Their approach utilizing inverse dynamics was a simple method of assessing a sprinter’s biomechanical abilities and horizontal force production. The methods Furusawa and colleagues (1927) introduced remain steadfast in the face of technological advancements.</p>
+<p>Modeling sprint kinetics provides sports scientists with insight into a player’s lower-body neuromuscular potential. For example, this information provides practitioners with the understanding of an athlete’s strengths and weaknesses. Currently, player profiling is impractical when working with positional tracking data. Game data does not often comprise of players reaching maximal speeds with maximal effort, a key factor in force-velocity-power profiling. Instead, researchers resort to profiling athletes at the Combine’s 40-yard dash event. They hope that these athlete profiles translate to in-game sprint performance.</p>
+<p>An emerging field in sports science is <em>in-situ</em> player profiling. This concept employs positional tracking data to model a player’s force-velocity-power profile. Doing so provides insight into how events like the 40-yard dash translate to on-field mechanical sprint capabilities. Presently there is only one publication, a proof-of-concept in men’s professional soccer, that utilizes GPS data to model force-velocity profiles. This submission expands on the <em>in-situ</em> concept in professional American Football.</p>
+<section id="sprint-kinetics" class="level3">
+<h3 class="anchored" data-anchor-id="sprint-kinetics"><strong>2.1 Sprint Kinetics</strong></h3>
+<p>There is very little difference between prospects’ mechanical abilities; within all position groups, fast and slow players express the same sprint kinetics. The area in which players differ is their ability to accelerate. Furusawa et al.&nbsp;(1927) discovered that all humans reach their maximal speeds following the function:</p>
+<p><span class="math display">\[
+v(t) = v_\max \cdot (1-e^\frac{-t}{\tau})\\
+\]</span></p>
+<p>where <span class="math inline">\(v(t)\)</span> represents an athlete’s velocity at time <span class="math inline">\(t\)</span>, <span class="math inline">\(v_\max\)</span> is an athlete’s maximum speed, and <span class="math inline">\(\tau\)</span> is the acceleration constant calculated:</p>
+<p><span class="math display">\[
+\tau = \frac{v_\max} {a_\max}
+\]</span></p>
+<p>where <span class="math inline">\(a_\max\)</span> is an athlete’s maximum acceleration. Building on the functions above, acceleration was modeled:</p>
+<p><span class="math display">\[
+a(t) = (\frac {v_\max}{\tau}) \cdot e^\frac{-t}{\tau}\\
+\]</span></p>
+<p>where <span class="math inline">\(a(t)\)</span> represents acceleration at time <span class="math inline">\(t\)</span>. Distance covered over time was also modeled:</p>
+<p><span class="math display">\[
+\Delta d (t)= v_\max \cdot ((t + \tau) \cdot e^\frac{-t}{\tau}) - (v_\max \cdot \tau)
+\]</span></p>
+<p>where <span class="math inline">\(\Delta d (t)\)</span> represents the distance travelled from point <span class="math inline">\(d_0\)</span> to <span class="math inline">\(d_i\)</span> at time <span class="math inline">\(t\)</span>.</p>
+<p>The plot below shows two athletes: athlete A (red) is <strong><em>acceleration</em></strong> dominant whereas athlete B (black) is <strong><em>speed</em></strong> dominant. Although these athletes are different, it is the context of a play that displays their strengths.<br>
+<br>
+</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="bdb-21_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="modernizing-old-models" class="level3">
+<h3 class="anchored" data-anchor-id="modernizing-old-models"><strong>2.2 Modernizing Old Models</strong></h3>
+<p>To apply the models above, athletes must begin with zero velocity. This translates well to football because, all but one offensive athlete, cannot move until the ball is snapped. Unfortunately, unlike track sprinting, receivers rarely run linearly at maximal efforts. This hurdle makes it difficult to apply player profiling models in-game. If receivers are impeded during play, they risk losing speed and require more time to reach maximal velocity.</p>
+<p>The concept is simple: which athlete reaches the intended destination first? Answering this question hinges on comparing athletes’ maximal potentials to cover distances in the time between the quarterback’s release of the ball and its arrival location. Thus, the models must be adjusted for time to be a function of velocity, acceleration, and distance.</p>
+<p>Time as a function of velocity, detailing how long it takes an athlete to reach a given speed:</p>
+<p><span class="math display">\[
+v^{-1}(t) = ln[1- (\frac{v}{v_\max})]\cdot\tau
+\]</span></p>
+<p>where <span class="math inline">\(v\)</span> is an athlete’s current speed and <span class="math inline">\(0 \leq v &lt; v_\max\)</span>.</p>
+<p>Time as a function of distance, illustrating how long it takes to reach a position in space:</p>
+<p><span class="math display">\[
+\Delta d^{-1}(t) = \tau \cdot W(-e^\frac{1 - \Delta d}{\tau \cdot v_\max}) + \tau + \frac{\Delta d}{v_\max}
+\]</span></p>
+<p>where <span class="math inline">\(W\)</span> is the Lambert W function and defined as the inverse of <span class="math inline">\(xe^x\)</span>. That is:</p>
+<p><span class="math display">\[
+y=W(x)\iff x=ye^y
+\]</span></p>
+<p>Finally, to model the speed reached, having travelled a given distance, the function is as follows:</p>
+<p><span class="math display">\[
+v^{-1}(\Delta d) = v_\max \cdot (t + \tau  e^\frac{-t}{\tau}) - (v_\max \cdot \tau)
+\]</span></p>
+<p>where <span class="math inline">\(t\)</span> is equal to <span class="math inline">\(v^{-1}(t)\)</span>.</p>
+</section>
+<section id="midsprint" class="level3">
+<h3 class="anchored" data-anchor-id="midsprint"><strong>2.3 Midsprint</strong></h3>
+<p>When the quarterback releases the ball, athletes rarely have zero velocity. The models above depend on individuals starting their run from a dead start. To understand how long it will take an athlete to cover a distance when in motion, the following function was derived:</p>
+<p><span class="math display">\[
+v^{-1}(\Delta d^{-1} (t)) = [\tau \cdot W(-e^\frac{1 - \Delta d + d_0}{\tau \cdot v_\max}) + \tau + \frac{\Delta d + d_0}{v_\max}] - [\tau \cdot W(-e^\frac{1 - d_0}{\tau \cdot v_\max}) + \tau + \frac{d_0}{v_\max}]
+\]</span></p>
+<p>where <span class="math inline">\(d_0\)</span> is equal to <span class="math inline">\(v^{-1}(\Delta d)\)</span> when <span class="math inline">\(v = 0\)</span>. This function assumes that athletes are running at maximal effort when spanning distances.</p>
+</section>
+</section>
+<section id="predicting-pass-outcomes" class="level2">
+<h2 class="anchored" data-anchor-id="predicting-pass-outcomes"><strong>3 Predicting Pass Outcomes</strong></h2>
+<section id="nearest-defender" class="level3">
+<h3 class="anchored" data-anchor-id="nearest-defender"><strong>3.1 Nearest Defender</strong></h3>
+<p>The defender closest to the receiver when the ball arrived was considered the primary defender. At the time of the ball’s release, players had unique locations on the field. Distances were calculated for the receiver and primary defender from their respective positions to where the ball arrived. The time interval between the release and arrival of the football was also recorded.</p>
+<p>The assumption dictates that the nearest defender was also the primary defender. Although this assumption may not always apply, it simplifies analyses.</p>
+</section>
+<section id="calculating-outcomes" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-outcomes"><strong>3.2 Calculating Outcomes</strong></h3>
+<p>Based on player speed and field position, the least amount of time required to travel from their current position to the ball’s destination was modeled. The time required to run this distance was based on the athlete’s unique force-velocity-power profile. As such, modeled outcomes are founded on the athlete arriving at the intended position with maximal effort and without impediment. Finally, pass outcomes were decided on whichever athlete arrived at the target destination first (offense: completion, defense: incompletion).</p>
+<p>All analyses were completed in R 4.0.2.</p>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results"><strong>4 Results</strong></h2>
+<p>There were 14,271 pass attempts that fit the inclusion criteria (11,022 completions, 3,249 incompletions). The average distance from the time-of-release to time-of-arrival was 5.32 yards and 7.89 yards for receivers and defenders, respectively. Receivers had a mean top speed of 10.6 yd/s and acceleration rate of 12.95 y/s/s (<span class="math inline">\(\tau\)</span> = 0.82 s), whereas defenders displayed a mean top speed of 10.26 yd/s and acceleration of 9.55 y/s/s (<span class="math inline">\(\tau\)</span> = 1.07 s). All details can be found in the table below.</p>
+<p>The model correctly predicted pass outcomes 77.48% of the time (96.38% when the pass was successful, 14.41% when incomplete).</p>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion"><strong>5 Discussion</strong></h2>
+<p>This paper was influenced by the current literature surrounding force-velocity-power profiling from the NFL Combine’s 40-yard dash test. It provides a novel approach to modeling athletes’ mechanical sprint capabilities that utilizes positional tracking data. Presently, there is only one publication that also attempts to model athletes <em>in-situ</em>.</p>
+<p>Outcomes were recorded as whichever athlete arrived first at the intended destination, based on their unique profile. The model accurately predicted pass outcomes nearly 4 out of 5 plays. Modeling pass outcomes in this paper presented unique challenges. The model cannot take game factors into account like interference, routes, contact, jukes, and dekes. Rather, it assumes that players are running linearly at maximal effort, without obstructions. As demonstrated, the outcomes heavily favoured pass completions. This can be attributed to the fact that the receiver knows their routes while defenders lag and must react to a receiver’s movements.</p>
+<section id="positional-f-v-p-profiles" class="level3">
+<h3 class="anchored" data-anchor-id="positional-f-v-p-profiles"><strong>5.1 Positional F-V-P Profiles</strong></h3>
+<p>Secondary analyses revealed that receivers are acceleration-dominant. Wide receivers and tight ends are heavily acceleration-dominant with <span class="math inline">\(\tau\)</span> below 0.90 s. All other offensive positions are also acceleration-dominant but to a lesser degree. Defensively, only cornerbacks and safeties are acceleration-dominant with very similar maximal speed, maximal acceleration, and <span class="math inline">\(\tau\)</span> values (0.83 s) as receivers. All other defensive positions display balanced or speed-dominant profiles.</p>
+</section>
+<section id="tuning-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="tuning-the-model"><strong>5.2 Tuning the Model</strong></h3>
+<p>A large proportion of receivers decelerate when receiving a pass. This deceleration might be due to quarterbacks poorly leading receivers while in stride, or the receiver’s attempt to secure the football. It was also found that most defenders accelerate increase between ball release and arrival. Defenders were also found to increase their speeds between ball arrival and pass reception. These factors affected pass completion rates.</p>
+<p>The model inaccurately predicts incompletions nearly 85% of the time. Further exploration identified that when the defender lags a receiver by less than 0.51 seconds to the point of arrival, as modeled when starting with zero velocity, it significantly decreases pass completion rates. Ergo, the proximity of a defender to the receiver coupled with the receiver’s deceleration dictates that the defense heavily influences pass outcomes between ball arrival and ball securement.</p>
+<p>The model was rerun with the parameter that passes marked incomplete if the defender lags the receiver by a maximum of 0.51 seconds to the point of arrival. Results from this model increased the accuracy of identifying pass incompletions nearly 55%, and improved overall accuracy to 87.7%.</p>
+</section>
+</section>
+<section id="practical-applications" class="level2">
+<h2 class="anchored" data-anchor-id="practical-applications"><strong>6 Practical Applications</strong></h2>
+<p>The 40-yard dash lasts 5 seconds or less. Much of the current research states that players with higher top speeds have better career success. The research does not explore the correlation between results at the Combine and on-field performance. This paper illustrates that wide receivers,tight ends, and corner acks heavily rely on their rates of acceleration in-game. Moreover, they rarely reach speeds on the field that were reached during the NFL Combine’s 40-yard dash test. Scouts should focus on an athlete’s rate of acceleration, not their top-speed or 40-yard split, when assessing athletic abilities. The formulas presented in this paper, and the accompanying R package midsprint, provides scouts with a novel method of assessing prospects.</p>
+<p><br>
+<br>
+</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+    } else {
+      disableStylesheet(alternateStylesheets);
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../blog/d-prime-balance-presentation.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Modelling D’ Balance Presentation</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../blog/fatigue-detection-presentation.html" class="pagination-link">
+        <span class="nav-page-text">Fatigue Detection via Tracking Data Presentation</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2022, Midsprint Sports Science Consulting</div>   
+      <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../disclaimer.html">Disclaimer</a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/aaronzpearson">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aaronzpearson">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:aaron@midsprint.io">
+      <i class="bi bi-envelope-fill" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
