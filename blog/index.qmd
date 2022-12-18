@@ -13,12 +13,12 @@ title: "Blog Posts"
 ### Note
 Some blog posts are undergoing large updates to improve the quality of writing, clarity, and code. 
 
-[**Review: Critical Velocity**](critical-speed.qmd)\
-A brief review of critical velocity the code needed to model it. 
-
 [**Replicating Inter-Limb Asymmetries are Associated with Decrements in Physical Performance in Youth Elite Team Sports Athletes**](asym-vs-performance.qmd)\
 Replicating the results from *Inter-limb asymmetries are associated with decrements in physical performance in youth elite team sports athletes* with the data set 
 that was made publicly available.
+
+[**Review: Critical Velocity**](critical-speed.qmd)\
+A brief review of critical velocity the code needed to model it. 
 
 [**Profiling Multiple Athletes with fvp**](fvp-split-apply-combine.qmd)\
 Modelling multiple force-velocity-power profiles simultaneously using the *fvp* package.
