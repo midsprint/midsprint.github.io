@@ -1,5 +1,5 @@
 ---
-title: "The Critical Speed Model"
+title: "The Critical Velocity Model"
 ---
 
 Critical power is, theoretically, the work output that one can sustain indefinitely. The concept is that an individual will, after sustained maximal effort work, reach a point at which their aerobic energy systems match the demands placed on the muscle. Although there is some validity to the model, it remains idealistic and is contested in the literature. 

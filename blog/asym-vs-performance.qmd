@@ -1,5 +1,5 @@
 ---
-title: "Inter-limb asymmetries are associated with decrements in physical performance in youth elite team sports athletes"
+title: "Replication of Inter-limb asymmetries versus performance in elite team sports athletes"
 ---
 
 *Fort-Vanmeerhaeghe, A., Bishop, C., Buscà, B., Aguilera-Castells, J., Vicens-Bordas, J., & Gonzalo-Skok, O. (2020). Inter-limb asymmetries are associated with decrements in physical performance in youth elite team sports athletes. PloS one, 15(3), e0229440. https://doi.org/10.1371/journal.pone.0229440*

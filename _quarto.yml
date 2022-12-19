@@ -52,9 +52,11 @@ website:
         #   href: blog/marathon-kcal-expend.qmd
         # - text: "Identifying the Lactate Threshold"
         #   href: blog/la-threshold.qmd
+        - text: "Using Tracking Data for the 3 Min CV Test"
+          href: blog/three-minute-test.qmd
         - text: "Replicating Asymmetries vs Performance"
           href: blog/asym-vs-performance.qmd
-        - text: "Review: Critical Velocity"
+        - text: "A Review of Critical Velocity Models"
           href: blog/critical-speed.qmd
         - text: "Profiling Multiple Athletes with fvp"
           href: blog/fvp-split-apply-combine.qmd
