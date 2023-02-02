@@ -52,6 +52,8 @@ website:
         #   href: blog/marathon-kcal-expend.qmd
         # - text: "Identifying the Lactate Threshold"
         #   href: blog/la-threshold.qmd
+        - text: "Sport Science Data Sets"
+          href: blog/data-sets.qmd
         - text: "Using Tracking Data for the 3 Min CV Test"
           href: blog/three-minute-test.qmd
         - text: "Replicating Asymmetries vs Performance"
@@ -81,6 +83,8 @@ website:
     border: false
     left: "Copyright 2022, Midsprint Sports Science Consulting"
     right: 
+    - text: "Privacy Policy"
+      href: privacy-policy.qmd
     - text: "Disclaimer"
       href: disclaimer.qmd
     - icon: twitter
