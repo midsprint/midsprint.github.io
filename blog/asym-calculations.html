@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Midsprint - Sport Science Data Sets</title>
+<title>Midsprint - Asymmetry Calculation Excel Sheet</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,8 +23,8 @@ ul.task-list{list-style: none;}
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
-<link href="../blog/three-minute-test.html" rel="next">
-<link href="../blog/asym-calculations.html" rel="prev">
+<link href="../blog/data-sets.html" rel="next">
+<link href="../blog/index.html" rel="prev">
 <link href="../images/midsprint-logo.png" rel="icon" type="image/png">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -83,25 +83,12 @@ cookieconsent.run({
 });
 </script> 
   
-<script src="..\site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="..\site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="..\site_libs/datatables-binding-0.23/datatables.js"></script>
-<script src="..\site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="..\site_libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="..\site_libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="..\site_libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
-<link href="..\site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
-<script src="..\site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="..\site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
-<script src="..\site_libs/selectize-0.12.0/selectize.min.js"></script>
-<link href="..\site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="..\site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Midsprint - Sport Science Data Sets">
+<meta property="og:title" content="Midsprint - Asymmetry Calculation Excel Sheet">
 <meta property="og:site-name" content="Midsprint">
-<meta name="twitter:title" content="Midsprint - Sport Science Data Sets">
+<meta name="twitter:title" content="Midsprint - Asymmetry Calculation Excel Sheet">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -156,7 +143,7 @@ cookieconsent.run({
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Sport Science Data Sets</h1>
+      <h1 class="quarto-secondary-nav-title">Asymmetry Calculation Excel Sheet</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -176,12 +163,12 @@ cookieconsent.run({
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/asym-calculations.html" class="sidebar-item-text sidebar-link">Asymmetry Calculation Sheet</a>
+  <a href="../blog/asym-calculations.html" class="sidebar-item-text sidebar-link active">Asymmetry Calculation Sheet</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../blog/data-sets.html" class="sidebar-item-text sidebar-link active">Sport Science Data Sets</a>
+  <a href="../blog/data-sets.html" class="sidebar-item-text sidebar-link">Sport Science Data Sets</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -234,7 +221,12 @@ cookieconsent.run({
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#using-the-excel-sheet" id="toc-using-the-excel-sheet" class="nav-link" data-scroll-target="#using-the-excel-sheet">Using the Excel Sheet</a>
+  <ul class="collapse">
+  <li><a href="#start-here" id="toc-start-here" class="nav-link" data-scroll-target="#start-here">Start Here</a></li>
+  <li><a href="#magnitude-of-asymmetry" id="toc-magnitude-of-asymmetry" class="nav-link" data-scroll-target="#magnitude-of-asymmetry">Magnitude of Asymmetry</a></li>
+  <li><a href="#asymmetry-and-direction" id="toc-asymmetry-and-direction" class="nav-link" data-scroll-target="#asymmetry-and-direction">Asymmetry and Direction</a></li>
+  </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -244,7 +236,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Sport Science Data Sets</h1>
+<h1 class="title d-none d-lg-block">Asymmetry Calculation Excel Sheet</h1>
 </div>
 
 
@@ -265,7 +257,8 @@ cookieconsent.run({
 </div>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>The <a href="https://storkjournals.org/">Society for Transparency Openness and Replication in Kinesiology</a> (STORK) recently pushed for sport science researchers to improve the standards of sport science research. STORK has asked that researchers be forthright with their methodologies, reporting results, and to provide accessible data sets. Many researchers heeded the call and, in particular, released the data sets that were utilized in their research.</p>
+<p>My MSc explored how inter-limb asymmetries impacted athletic performance in professional ice-hockey. While working on the project, I became frustrated with the lack of readily available resources for calculating asymmetries. This prompted me to write the R Stats <a href="https://github.com/aaronzpearson/interlimb">interlimb</a> package.</p>
+<p>Although the R package is accessible for researchers who are comfortable with R, there was still a barrier to those who work primarily in MS Excel and Google Sheets. Therefore, I decided to create a brief Excel Sheet that automatically performs various asymmetry, mean, and SD calculations.</p>
 <p><br>
 </p>
 <style type="text/css">
@@ -326,23 +319,35 @@ cookieconsent.run({
 <script src="https://static.mailerlite.com/js/w/webforms.min.js?v7316d10e2931a97c7b0f5c7e7e7be3ea" type="text/javascript"></script>
 <p><br>
 </p>
-<p>Greater accessibility to data sets brings opportunities for independent researchers to rerun the analyses outline in publications, and run new analyses which may provide new insights. The ability to work with <em>real</em> data sets also invites innovation within the field of sport science. For example, students working with actual human data will be exposed to messy data, incorrect inputs, and inefficient data collection techniques. Students will also learn how to clean the data, transform it when necessary, and improve reporting. Doing so can bring to light the need to learn the nuances in statistical analyses and improve the methods of how we record data. Moreover, if more student graduate with a comprehensive understanding of how to clean and analyse the data, and effectively report outcomes, student will unwittingly push sport scientists to consider new or advanced modelling approaches. That is, if the current standard of practice is to report descriptive statistics, assess normality, and report correlations, researchers may be avoiding the use of, for example, resampling techniques. An influx of young researchers who can perform t-tests and correlation matrices can provide researchers with the opportunity to consider different approaches to their research questions.</p>
-<p>This <a href="https://midsprint.io/blog/asym-vs-performance.html">post</a> is an example of how students can utilize data sets to rerun analyses and assess whether their results match the ones that were published. The <a href="https://midsprint.io/blog/asym-vs-performance.html#discussion">Discussion section</a> outlines how the results in the post are close, but do not match, the original research and hypothesises why this might be the case.</p>
 </section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>The table below provides a handful of data sets that were publicly released on sites like <a href="https://data.mendeley.com/">Mendeley Data</a>, <a href="https://osf.io/">OSF</a>, and <a href="https://figshare.com/">figshare</a>. They cover various areas of sport and exercise science like player profiling, gait mechanics, and aging.</p>
-<p>Over time, the table will reference a greater number of data sets. Feel free to keep an eye on this post. Otherwise, you can sign-up to the newsletter and will receive the occasional email with updates.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="htmlwidget-cd300287e71cf00b0125" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cd300287e71cf00b0125">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["Exploring the Y-Balance-Test scores and inter-limb asymmetry in soccer players: differences between competitive level and field positions","Inter-limb asymmetries are associated with decrements in physical performance in youth elite team sports athletes","Jumping vs. running: effects of exercise modality on aerobic capacity and neuromuscular performance after a six-week high-intensity interval training","The effects of exercise variation in muscle thickness, maximal strength and motivation in resistance trained men","Assessment of the load-velocity profile in the free-weight prone bench pull exercise through different velocity variables and regression models","Fatigue indices and perceived exertion highlight ergometer specificity for repeated sprint ability testing","GoldenCheetah OpenData Project","Measurement agreement between Samozino’s method and force plate force-velocity profiles during barbell and hexbar countermovement jumps","Ambulatory function in spinal muscular atrophy: Age-related patterns of progression","Decreased variability of the 6 minute walk test by heart rate correction in patients with neuromuscular disease","Relationship between vertical and horizontal fvp profiles in various sports and levels of practice","Starting block acceleration raw data from sprinting with prosthetic versus biological legs","Data set for gait analysis and assessment of fall risk for older adults"],["<a href='https://doi.org/10.6084/m9.figshare.c.5912038.v1' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.6084/m9.figshare.8282852.v2' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.6084/m9.figshare.21621411.v1' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.6084/m9.figshare.9879737.v2' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.1371/journal.pone.0212085' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.6084/m9.figshare.11961159.v1' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.17605/OSF.IO/6HFPZ' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.17605/OSF.IO/ZCJB6' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.1371/journal.pone.0199657.s001' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.1371/journal.pone.0114273' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.7717/peerj.5937/supp-1' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.1098/rsos.211799' target='_blank'>[Download]<\/a>","<a href='https://doi.org/10.1016/j.dib.2020.106550' target='_blank'>[Download]<\/a>"],["Asymmetry, Soccer","Asymmetry, Performance","Jump, Neuromuscular, Exercise","Exercise","Load-Velocity, Athlete Profiling","Fatigue, Sprinting","Positional Tracking","Force-Velocity, Countermovement Jump","Walk test, Physiotherapy, Aging","Walk test, Aging, Neuromuscular Disease","Force-Velocity, Countermovement Jump, Sprint","Force-Velocuty, Sprint","Walk, Aging, Gait, Fall Risk"],["González-Fernández, F.T., Martínez-Aranda, L.M., Falces-Prieto, M. et al. Exploring the Y-Balance-Test scores and inter-limb asymmetry in soccer players: differences between competitive level and field positions. BMC Sports Sci Med Rehabil 14, 45 (2022). https://doi.org/10.1186/s13102-022-00438-w","Fort, Azahara; Bishop, Chris; Buscà, Bernat; Aguilera-Castells, Joan; Vicens, Jordi; Gonzalo-Skok, Oliver (2020): Data asymmetries vs performance. figshare. Dataset. https://doi.org/10.6084/m9.figshare.8282852.v2 ","Venegas-Carro, Maria (2022): Jumping vs. running: effects of exercise modality on aerobic capacity and neuromuscular performance after a six-week high-intensity interval training. figshare. Dataset. https://doi.org/10.6084/m9.figshare.21621411.v1 ","Baz-Valle E, Schoenfeld BJ, Torres-Unda J, Santos-Concejero J, Balsalobre-Fernández C (2019) The effects of exercise variation in muscle thickness, maximal strength and motivation in resistance trained men. PLoS ONE 14(12): e0226989. https://doi.org/10.1371/journal.pone.0226989","García-Ramos, A., Ulloa-Díaz, D., Barboza-González, P., Rodríguez-Perea, Á., Martínez-García, D., Quidel-Catrilelbún, M., Guede-Rojas, F., Cuevas-Aburto, J., Janicijevic, D., & Weakley, J. (2019). Assessment of the load-velocity profile in the free-weight prone bench pull exercise through different velocity variables and regression models. PloS one, 14(2), e0212085. https://doi.org/10.1371/journal.pone.0212085","Kerhervé, H. A., Stewart, D. G., McLellan, C., & Lovell, D. (2020). Fatigue Indices and Perceived Exertion Highlight Ergometer Specificity for Repeated Sprint Ability Testing. Frontiers in sports and active living, 2, 45. https://doi.org/10.3389/fspor.2020.00045","Liversedge, M. (2021, December 24). GoldenCheetah OpenData Project. https://doi.org/10.17605/OSF.IO/6HFPZ","Hicks, D. S., Drummond, C., & Williams, K. J. (2022). Measurement Agreement Between Samozino's Method and Force Plate Force-Velocity Profiles During Barbell and Hexbar Countermovement Jumps. Journal of strength and conditioning research, 36(12), 3290–3300. https://doi.org/10.1519/JSC.0000000000004144","Montes J, McDermott MP, Mirek E, Mazzone ES, Main M, Glanzman AM, et al. (2018) Ambulatory function in spinal muscular atrophy: Age-related patterns of progression. PLoS ONE 13(6): e0199657.","P. Prahm, K., Witting, N., & Vissing, J. (2016). Decreased Variability of the 6-Minute Walk Test by Heart Rate Correction in Patients with Neuromuscular Disease. doi: 10.1371/journal.pone.0114273 ","Jiménez-Reyes, P., Samozino, P., García-Ramos, A., Cuadrado-Peñafiel, V., Brughelli, M., & Morin, J. B. (2018). Relationship between vertical and horizontal force-velocity-power profiles in various sports and levels of practice. PeerJ, 6, e5937. https://doi.org/10.7717/peerj.5937","Beck Owen N., Taboga Paolo and Grabowski Alena M. 2022Sprinting with prosthetic versus biological legs: insight from experimental dataR. Soc. open sci.9211799211799. https://doi.org/10.1098/rsos.211799","Caicedo, P. E., Rengifo, C. F., Rodriguez, L. E., Sierra, W. A., & Gómez, M. C. (2020). Dataset for gait analysis and assessment of fall risk for older adults. Data in brief, 33, 106550. https://doi.org/10.1016/j.dib.2020.106550"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Title<\/th>\n      <th>Link<\/th>\n      <th>Tags<\/th>\n      <th>Reference<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ft","autoWidth":true,"columnDefs":[{"width":"15%","targets":[1,2,3]}],"order":[],"orderClasses":false,"orderCellsTop":true,"rowCallback":"function(row, data, displayNum, displayIndex, dataIndex) {\nvar value=data[3]; $(this.api().cell(row, 3).node()).css({'font-size':'50%'});\nvar value=data[0]; $(this.api().cell(row, 0).node()).css({'font-size':'85%'});\nvar value=data[1]; $(this.api().cell(row, 1).node()).css({'font-size':'85%'});\nvar value=data[2]; $(this.api().cell(row, 2).node()).css({'font-size':'85%'});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
-</div>
-</div>
+<section id="using-the-excel-sheet" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-excel-sheet">Using the Excel Sheet</h2>
+<p>The Excel Sheet can be downloaded from Research Gate: <a href="https://www.researchgate.net/publication/369194738_Asymmetry_Index_Calculations" class="uri">https://www.researchgate.net/publication/369194738_Asymmetry_Index_Calculations</a></p>
+<p>The file has three sheets: <em>Start here</em>, <em>Magnitude of Asymmetry</em>, and <em>Asymmetry and Direction</em>. All of these sheets are “protected” so that accidental alterations to asymmetry calculation formulas don’t occur. If you would like to alter or customize the file, please reach out at <a href="aaron@midsprint.io">aaron@midsprint.io</a>.</p>
+<section id="start-here" class="level3">
+<h3 class="anchored" data-anchor-id="start-here">Start Here</h3>
+<p>The first sheet outlines how to use the document and which asymmetry indexes are used. Even though indexes are typically named in the literature, it was decided that the asymmetry indexes are numbered. Doing so exemplifies how different indexes can return the same asymmetry score.<br>
+<br>
+<img src="blog-images/sheet%201.JPG" class="img-fluid" data-fig-align="center" alt="Asymmetry Calculations: Start Here"></p>
+</section>
+<section id="magnitude-of-asymmetry" class="level3">
+<h3 class="anchored" data-anchor-id="magnitude-of-asymmetry">Magnitude of Asymmetry</h3>
+<p>The second sheet returns which limb is stronger, the magnitude of asymmetry (positive values only), and the mean and SD for each limb and index.<br>
+<br>
+<img src="blog-images/sheet%202.JPG" class="img-fluid" alt="Asymmetry Calculations: Magnitude of Asymmetry"></p>
+</section>
+<section id="asymmetry-and-direction" class="level3">
+<h3 class="anchored" data-anchor-id="asymmetry-and-direction">Asymmetry and Direction</h3>
+<p>The third sheet returns which limb is stronger, the asymmetry and direction, and the mean and SD for each limb and index. When the left limb is stronger, the asymmetry score is returned as a negative score.<br>
+<br>
+<img src="blog-images/sheet%203.JPG" class="img-fluid" alt="Asymmetry Calculations: Asymmetry and Direction"></p>
+</section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Accessibility to publicly available data sets can drive the field of sport and exercise science forward by exposing young researchers to data sets that they might encounter in their academic careers. Doing so can improve the robustness of statistical methods and reporting of results, and provide researchers with opportunities to explore new and innovative modelling techniques for future research.</p>
+<p>The Excel Sheet is intended to provide greater transparency in inter-limb asymmetry research.</p>
+<p>Feel free to use the Excel sheet in your research with appropriate citation.</p>
+<p>If you would like the sheet customized, please reach out at <a href="aaron@midsprint.io">aaron@midsprint.io</a>.</p>
 <p><br>
 <br>
 </p>
@@ -584,13 +589,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../blog/asym-calculations.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Asymmetry Calculation Sheet</span>
+      <a href="../blog/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><strong>Blog Posts</strong></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../blog/three-minute-test.html" class="pagination-link">
-        <span class="nav-page-text">Using Tracking Data for the 3 Min CV Test</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../blog/data-sets.html" class="pagination-link">
+        <span class="nav-page-text">Sport Science Data Sets</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
