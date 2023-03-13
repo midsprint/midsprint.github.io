@@ -52,6 +52,8 @@ website:
         #   href: blog/marathon-kcal-expend.qmd
         # - text: "Identifying the Lactate Threshold"
         #   href: blog/la-threshold.qmd
+        - text: "Asymmetry Calculation Sheet"
+          href: blog/asym-calculations.qmd
         - text: "Sport Science Data Sets"
           href: blog/data-sets.qmd
         - text: "Using Tracking Data for the 3 Min CV Test"
