@@ -1,0 +1,35 @@
+---
+title: " "
+search: false
+---
+
+<center>
+### Thank you for subscribing to the Midsprint newsletter! 
+#### Below is your free preview of the **NSCA's Essentials of Sport Science**
+</center>
+\
+\
+
+:::{.column-page}
+
+```{=html}
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <p class="accordion-header" id="headingOne">
+      <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-size:10px">
+        <i class="bi bi-chevron-right"></i>  <strong>Affiliate Disclosure</strong>
+      </button>
+    </p>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+      <div class="accordion-body" style="font-size:10px">
+        Blog posts may contain affiliate links.
+Purchasing items through these links may result in me earning a small comission at no extra cost to you which helps support this website. <a target="_blank" href="https://midsprint.io/disclaimer.html">See More</a>
+      </div>
+    </div>
+  </div>
+</div>
+```
+```{=html}
+<iframe width="100%" height="750" src="https://read.amazon.com/kp/embed?asin=B08L758TCY&preview=newtab&linkCode=kpe&ref_=cm_sw_r_kb_dp_P0XAFPY6AX9TR6HNHE70&tag=m1d5pr1n7-20"></iframe>
+```
+:::

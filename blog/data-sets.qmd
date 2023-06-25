@@ -1,16 +1,24 @@
 ---
-title: "Replication of Inter-limb asymmetries versus performance in elite team sports athletes"
+title: "Sport Science Data Sets"
 ---
 
-*Fort-Vanmeerhaeghe, A., Bishop, C., Buscà, B., Aguilera-Castells, J., Vicens-Bordas, J., & Gonzalo-Skok, O. (2020). Inter-limb asymmetries are associated with decrements in physical performance in youth elite team sports athletes. PloS one, 15(3), e0229440. https://doi.org/10.1371/journal.pone.0229440*
+```{r, echo=FALSE}
+library(DT)
+library(readxl)
+
+data.sets <- read_excel("E:/midsprint-scripts-in-progress/data sets/data set list.xlsx")
+data.sets$`Download Link` <- paste0("<a href='", data.sets$Link,"' target='_blank'>", "[Download]","</a>")
+
+data.sets <- data.sets[, c(1, 5, 3, 4)]
+
+colnames(data.sets) <- c("Title", "Link", "Tags", "Reference")
+
+```
+
 
 ## Introduction
 
-The paper explored whether there were relationships between inter-limb asymmetries and athletic performance in youth elite team sports. A secondary goal was to establish whether sex influenced inter-limb asymmetries.
-
-The authors performed a cross-sectional study. Eighty-one elite youth team sport athletes were recruited. Athletes were assessed in the anterior star excursion balance test, single-leg countermovement jump, single leg broad jump, 30 m sprint, and a change-of-direction V-cut test.
-
-Original paper can be found here: \[[Link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7053777/pdf/pone.0229440.pdf)\]
+The [Society for Transparency Openness and Replication in Kinesiology](https://storkjournals.org/) (STORK) recently pushed for sport science researchers to improve the standards of sport science research.  STORK has asked that researchers be forthright with their methodologies, reporting results, and to provide accessible data sets. Many researchers heeded the call and, in particular, released the data sets that were utilized in their research. 
 
 \
 ```{=html}
@@ -73,363 +81,32 @@ Original paper can be found here: \[[Link](https://www.ncbi.nlm.nih.gov/pmc/arti
 ```
 \
 
-### Data Analysis
+Greater accessibility to data sets brings opportunities for independent researchers to rerun the analyses outline in publications, and run new analyses which may provide new insights. The ability to work with *real* data sets also invites innovation within the field of sport science. For example, students working with actual human data will be exposed to messy data, incorrect inputs, and inefficient data collection techniques. Students will also learn how to clean the data, transform it when necessary, and improve reporting. Doing so can bring to light the need to learn the nuances in statistical analyses and improve the methods of how we record data. Moreover, if more student graduate with a comprehensive understanding of how to clean and analyse the data, and effectively report outcomes, student will unwittingly push sport scientists to consider new or advanced modelling approaches. That is, if the current standard of practice is to report descriptive statistics, assess normality, and report correlations, researchers may be avoiding the use of, for example, resampling techniques. An influx of young researchers who can perform t-tests and correlation matrices can provide researchers with the opportunity to consider different approaches to their research questions. 
 
-Data can be downloaded by following this link: \[[Link](https://doi.org/10.6084/m9.figshare.8282852.v2)\]
+This [post](https://midsprint.io/blog/asym-vs-performance.html) is an example of how students can utilize data sets to rerun analyses and assess whether their results match the ones that were published. The [Discussion section](https://midsprint.io/blog/asym-vs-performance.html#discussion) outlines how the results in the post are close, but do not match, the original research and hypothesises why this might be the case. 
 
-Inter-limb asymmetries were calculated as:
+## Results
 
-$$
-asymmetry = \frac{(high – low)}{low} * 100 
-$$
+The table below provides a handful of data sets that were publicly released on sites like [Mendeley Data](https://data.mendeley.com/), [OSF](https://osf.io/), and [figshare](https://figshare.com/). They cover various areas of sport and exercise science like player profiling, gait mechanics, and aging. 
 
-The authors performed several analyses:
+Over time, the table will reference a greater number of data sets. Feel free to keep an eye on this post. Otherwise, you can sign-up to the newsletter and will receive the occasional email with updates. 
 
-Data was checked for normality using the **Kolmogorov-Smirnov** test, and within-session reliability was measured using a **two-way random ICC** with absolute agreement and **coefficient of variation**.
-
-**Student t-tests** were run to identify potential differences in asymmetries between the group and each sex. **Independent sample t-tests** were also run to identify potential differences in asymmetries between sexes.
-
-**Cohen's d** was used to assess the magnitude of the difference of effect size for the asymmetries between the sexes. Effect size was interpreted as suggested by [Hopkins et al. (2009)](https://doi.org/10.1249/MSS.0b013e31818cb278).
-
-Finally, relationships between asymmetry scores and physical performance were assessed using the **Pearson correlation coefficient**. Relationships were established for the whole group and for each sex. Strength of the correlation was interpreted as suggested by [Hopkins et al. (2009)](https://doi.org/10.1249/MSS.0b013e31818cb278).
-
-The authors did not state whether outliers were removed. Therefore, the analyses performed on the data includes all observations.
-
-## Code
-
-Some of the analyses cannot be completed with the data set that was made public.
-
-### Set-Up
-
-```{r libraries, message = FALSE, warning = FALSE}
-library(readxl) # to read in data
-library(tidyverse, quietly = TRUE) # for tidy code
-library(janitor) # clean variable names
-library(skimr) # for easy exploratory analyses
-library(correlation) # correlation matrices
-library(report) # automate reporting of results
-library(parameters) # supplemental reporting fns
-library(knitr) # clean reporting
+```{r, echo = FALSE}
+DT::datatable(data.sets, 
+              rownames = FALSE,
+              options = list(dom = 'ft', autoWidth = T,
+                       columnDefs = list(
+                         list(width = '15%', targets = c("Link", "Tags", "Reference")))),
+              filter = list(position = "top"),
+              escape = FALSE) %>% 
+  DT::formatStyle(columns = c(4), fontSize = "50%") %>%
+  DT::formatStyle(columns = c(1:3), fontSize = "85%")
 ```
 
 
-### Original Data Set
+## Conclusion
 
-```{r real-read, echo = FALSE, warning = FALSE}
-asym <- read_excel("E:/midsprint-scripts-in-progress/reruns/asymmetries v performance/Data asymmetries vs performance .xlsx")
-
-asym <- asym %>% 
-  clean_names() %>%  # clean column names
-  mutate_if(Negate(is.numeric), as.numeric) %>%  # convert non-numeric to numeric
-  mutate(sex = case_when(
-    sex == 0 ~ "male",
-    sex == 1 ~ "female"
-  ))
-```
-
-
-```{r fake-read, eval = FALSE}
-asym <- read_excel("Data asymmetries vs performance.xlsx")
-
-asym <- asym %>% 
-  clean_names() %>%  # clean column names
-  mutate_if(Negate(is.numeric), as.numeric) %>%  # convert non-numeric to numeric
-  mutate(sex = case_when(
-    sex == 0 ~ "male",
-    sex == 1 ~ "female"
-  ))
-```
-
-```{r asym-head}
-#| code-fold: true
-knitr::kable(head(asym))
-```
-
-
-### Descriptive Statistics
-
-::: {.panel-tabset}
-
-## Both Sexes
-
-```{r skim, warning = FALSE}
-skim.asym <- skim(asym)
-skim.asym <- cbind(skim.asym,
-                   tibble(kolmogorov.smirnov = sapply(asym, FUN = function(x) if(is.numeric(x)) round(ks.test(x, "pnorm")$p.value, 2))))
-skim.asym <- skim.asym[, c(-1, -4:-9, -12:-16)]
-skim.asym <- as.data.frame(sapply(skim.asym, FUN = function(x) if(is.double(x)) round(x, 3) else as.character(x)))
-```
-
-```{r skim-table}
-#| code-fold: true
-kable(skim.asym)
-```
-
-## Male
-
-```{r skim-sex}
-skim.asym.by.sex <- skim(asym %>% 
-                    group_by(sex))
-
-skim.asym.by.sex <- skim.asym.by.sex[, c(-1, -8:-12)]
-skim.asym.by.sex <- as.data.frame(sapply(skim.asym.by.sex, FUN = function(x) if(is.double(x)) round(x, 3) else as.character(x)))
-```
-
-```{r skim-male}
-#| code-fold: true
-kable(skim.asym.by.sex %>% 
-              filter(sex == "male"))
-```
-
-## Female
-
-```{r skim-sex-copy}
-skim.asym.by.sex <- skim(asym %>% 
-                    group_by(sex))
-
-skim.asym.by.sex <- skim.asym.by.sex[, c(-1, -8:-12)]
-skim.asym.by.sex <- as.data.frame(sapply(skim.asym.by.sex, FUN = function(x) if(is.double(x)) round(x, 3) else as.character(x)))
-```
-
-```{r skim-female}
-#| code-fold: true
-kable(skim.asym.by.sex %>% 
-              filter(sex == "female"))
-```
-
-
-:::
-
-### Statistical Analysis
-
-The authors report that they assessed limbs as strong and weak. The following code separates the limb values by strength for further analyses.
-
-```{r stats-setup}
-asym.stats <- asym %>% 
-  mutate(sebt.high = ifelse(sebt_ant_skillful > sebt_ant_non_skillfull, sebt_ant_skillful, sebt_ant_non_skillfull),
-         sebt.low = ifelse(sebt_ant_skillful < sebt_ant_non_skillfull, sebt_ant_skillful, sebt_ant_non_skillfull),
-         
-         olht.high = ifelse(olht_skillfull > olhte_non_skillfull, olht_skillfull, olhte_non_skillfull),
-         olht.low = ifelse(olht_skillfull < olhte_non_skillfull, olht_skillfull, olhte_non_skillfull),
-         
-         cmj.high = ifelse(cmj_skillfull > cmj_nonskillfull, cmj_skillfull, cmj_nonskillfull),
-         cmj.low = ifelse(cmj_skillfull < cmj_nonskillfull, cmj_skillfull, cmj_nonskillfull)) 
-```
-
-### t-tests
-
-#### Asymmetries by Group vs by Sex
-
-::: {.panel-tabset}
-
-## CMJ
-
-```{r ttest-grp-sex-cmj}
-percent.asi.cmj <- asym.stats$percent_asi_cmj
-percent.asi.cmj.male <- subset(asym.stats, sex == "male")$percent_asi_cmj
-percent.asi.cmj.female <- subset(asym.stats, sex == "female")$percent_asi_cmj
-
-grp.v.male.cmj <- t.test(percent.asi.cmj, percent.asi.cmj.male)
-grp.v.female.cmj <- t.test(percent.asi.cmj, percent.asi.cmj.female)
-```
-
-```{r ttest-grp-male-cmj, warning = FALSE}
-#| code-fold: true
-report(grp.v.male.cmj)
-```
-
-```{r ttest-grp-female-cmj, warning = FALSE}
-#| code-fold: true
-report(grp.v.female.cmj)
-```
-
-## Star Balance
-
-```{r ttest-grp-sex-sebt}
-percent.asi.sebt <- asym.stats$percent_asi_sebt_ant
-percent.asi.sebt.male <- subset(asym.stats, sex == "male")$percent_asi_sebt_ant
-percent.asi.sebt.female <- subset(asym.stats, sex == "female")$percent_asi_sebt_ant
-
-
-grp.v.male.sebt <- t.test(percent.asi.sebt, percent.asi.sebt.male)
-grp.v.female.sebt <- t.test(percent.asi.sebt, percent.asi.sebt.female)
-```
-
-```{r ttest-grp-male-sebt}
-#| code-fold: true
-report(grp.v.male.sebt)
-```
-
-```{r ttest-grp-female-sebt}
-#| code-fold: true
-report(grp.v.female.sebt)
-```
-
-## Broad Jump
-
-```{r ttest-grp-sex-olht}
-percent.asi.olht <- asym.stats$percent_asi_olht
-percent.asi.olht.male <- subset(asym.stats, sex == "male")$percent_asi_olht
-percent.asi.olht.female <- subset(asym.stats, sex == "female")$percent_asi_olht
-
-grp.v.male.olht <- t.test(percent.asi.olht, percent.asi.olht.male)
-grp.v.female.olht <- t.test(percent.asi.olht, percent.asi.olht.female)
-```
-
-```{r ttest-grp-male-olht}
-#| code-fold: true
-report(grp.v.female.olht)
-```
-
-```{r ttest-grp-female-olht}
-#| code-fold: true
-report(grp.v.male.olht)
-```
-
-:::
-
-#### Asymmetries by Sex
-
-::: {.panel-tabset}
-
-## CMJ
-
-```{r asym-sex-cmj}
-male.v.female.cmj <- t.test(percent.asi.cmj.male, percent.asi.cmj.female)
-```
-
-```{r asym-cmj}
-#| code-fold: true
-report(male.v.female.cmj)
-```
-
-## Star Balance
-
-```{r asym-sex-sebt}
-male.v.female.sebt <- t.test(percent.asi.sebt.male, percent.asi.sebt.female)
-```
-
-```{r asym-sebt}
-#| code-fold: true
-report(male.v.female.sebt)
-```
-
-## Broad Jump
-
-```{r asym-sex-olht}
-male.v.female.olht <- t.test(percent.asi.olht.male, percent.asi.olht.female)
-```
-
-```{r asym-olht}
-#| code-fold: true
-report(male.v.female.olht)
-```
-
-:::
-
-### Correlations
-
-::: {.panel-tabset}
-
-## Both Sexes
-
-```{r cor-grp}
-cor.group <- correlation(asym.stats,
-                            select = c("percent_asi_sebt_ant",
-                                       "percent_asi_olht",
-                                       "percent_asi_cmj"),
-                            select2 = c("x30m_sprint",
-                                        "v_cut_test",
-                                        "olht.high",
-                                        "olht.low",
-                                        "cmj.high",
-                                        "cmj.low",
-                                        "sebt.high",
-                                        "sebt.low")) 
-```
-
-```{r cor-grp-print}
-#| code-fold: true
-print_md(
-  summary(cor.group, 
-          stars = TRUE,
-          include_significance = FALSE)
-)
-```
-
-
-## Male
-
-```{r cor-male}
-cor.male <- correlation(asym.stats %>% 
-                              filter(sex == "male"),
-                            select = c("percent_asi_sebt_ant",
-                                       "percent_asi_olht",
-                                       "percent_asi_cmj"),
-                            select2 = c("x30m_sprint",
-                                        "v_cut_test",
-                                        "olht.high",
-                                        "olht.low",
-                                        "cmj.high",
-                                        "cmj.low",
-                                        "sebt.high",
-                                        "sebt.low")) 
-```
-
-```{r cor-male-print}
-#| code-fold: true
-print_md(
-  summary(cor.male, 
-          stars = TRUE,
-          include_significance = FALSE)
-)
-```
-
-
-## Female
-
-```{r cor-female}
-cor.female <- correlation(asym.stats %>% 
-                              filter(sex == "female"),
-                            select = c("percent_asi_sebt_ant",
-                                       "percent_asi_olht",
-                                       "percent_asi_cmj"),
-                            select2 = c("x30m_sprint",
-                                        "v_cut_test",
-                                        "olht.high",
-                                        "olht.low",
-                                        "cmj.high",
-                                        "cmj.low",
-                                        "sebt.high",
-                                        "sebt.low")) 
-```
-
-```{r cor-female-print}
-#| code-fold: true
-print_md(
-  summary(cor.female, 
-          stars = TRUE,
-          include_significance = FALSE)
-)
-```
-:::
-
-
-## Discussion
-
-The results from the paper resemble those that were assessed in this post. Although, there are some key differences that should be addressed.
-
-Primarily, the number of male and female participants in the provided data set do not match the reported number of males and females. This could be a typo in either the publication or the data set during anonymization. Moreover, there are missing observations in the data set that were not accounted for. This can be seen in the *Descriptive Statistics* section. 
-
-There are marked differences in mean and SD values. Although a significance test was not performed between the two, the results in this post should not differ from the publication. If issues arose from the misclassification of a participant, there shouldn't be stark contrasts between the results here and the original publication. Rather, the individual's results should have a minimal impact on the outcomes here. 
-
-Although the data was tested for normality, the histograms reveal that much of the data was not actually normally distributed. This is due to various issues like outliers remaining in the data set. Subsequent analyses showed that some parameters included values that exceeded five SDs. Since these values exceed three SDs, rationale dictates that the values are either improperly recorded or are not representative of the sample size, and should be removed.
-
-Finally, the majority of the significance values (p-values) for the t-tests and correlations do not coincide between these results and the publication. 
-
-It is unclear why the results in this post do not match those in the original publication. It is prudent to say that the analyses in this post were completed incorrectly. Unfortunately, there is enough evidence suggesting that many of the analyses were completed correctly and that the results in the publication are subject to various typos or that statistical analyses were misinterpreted.
-
-Further analyses should be completed that remove outliers and transform data to ensure that the data is normally distributed prior to completing statistical analyses. Many of the distributions returned to the user (see above) can be either log-transformed or a Box-Cox transformation, both of which can be easily back-transformed. 
+Accessibility to publicly available data sets can drive the field of sport and exercise science forward by exposing young researchers to data sets that they might encounter in their academic careers. Doing so can improve the robustness of statistical methods and reporting of results, and provide researchers with opportunities to explore new and innovative modelling techniques for future research. 
 
 \
 \
