@@ -10,15 +10,17 @@ title: "Blog Posts"
 <!-- [**Identifying the Lactate Threshold Using Splines**](la-threshold.qmd)\ -->
 <!-- Using publicly available lactate threshold testing data, we are able to use different machine learning techniques to identify an athlete's lactate threshold and critical power.  -->
 
-### Note
-Some blog posts are missing because they are undergoing large updates to improve the quality of writing, clarity, and code.
+[**Inter-Limb Asymmetry Calculation Sheet**](asym-calculations.qmd)\
+A lightweight MS Excel Sheet to automate the calculation of inter-limb asymmetry scores, means, and SDs. 
+
+[**Publicly Available Sport and Exercise Science Data Sets (Updated June 2023)**](data-sets.qmd)\
+An occasionally updated index of publicly available sport and exercise science data sets for personal and research use. 
 
 [**Using Player Tracking Data as an Alternative to the 3 Minute All-Out Critical Velocity Test**](three-minute-test.qmd)\
 Modelling critical velocity empirically using a similar approach as the 3 minute all-out critical velocity test. 
 
 [**Replication of Inter-Limb Asymmetries are Associated with Decrements in Physical Performance in Youth Elite Team Sports Athletes**](asym-vs-performance.qmd)\
-Replicating the results from *Inter-limb asymmetries are associated with decrements in physical performance in youth elite team sports athletes* with the data set 
-that was made publicly available.
+Replicating the results from *Inter-limb asymmetries are associated with decrements in physical performance in youth elite team sports athletes* with the data set that was made publicly available.
 
 [**A Review of Critical Velocity Models**](critical-speed.qmd)\
 A brief review of critical velocity the code needed to model it. 
