@@ -94,11 +94,16 @@ Over time, the table will reference a greater number of data sets. Feel free to 
 ```{r, echo = FALSE}
 DT::datatable(data.sets, 
               rownames = FALSE,
-              options = list(dom = 'ft', autoWidth = T,
+              options = list(dom = 'ft', 
+                             autoWidth = T,
+                             scrollY = 600,
+                             pageLength = 100,
                        columnDefs = list(
                          list(width = '15%', targets = c("Link", "Tags", "Reference")))),
               filter = list(position = "top"),
-              escape = FALSE) %>% 
+              escape = F,
+              fillContainer = getOption("DT.fillcontainer"),
+              ) %>% 
   DT::formatStyle(columns = c(4), fontSize = "50%") %>%
   DT::formatStyle(columns = c(1:3), fontSize = "85%")
 ```
